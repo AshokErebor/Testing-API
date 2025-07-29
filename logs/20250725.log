@@ -1,0 +1,240 @@
+[2025-07-25 05:20:13] [ERROR] Something went wrong, Please try again!
+[2025-07-25 05:21:11] [INFO] POST /api/storeAdmin/login
+[2025-07-25 05:21:24] [INFO] POST /api/verifyUser
+[2025-07-25 05:21:25] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-25 05:21:25] [INFO] GET /api/storeAdmin/statistics
+[2025-07-25 05:21:34] [INFO] GET /api/coupon/getcoupons
+[2025-07-25 05:21:37] [INFO] POST /api/coupon/deleteCoupon/NEW10
+[2025-07-25 05:21:46] [INFO] GET /api/coupon/getcoupons
+[2025-07-25 05:24:32] [INFO] POST /api/storeAdmin/login
+[2025-07-25 05:24:44] [INFO] POST /api/verifyUser
+[2025-07-25 05:25:42] [INFO] POST /api/coupon/deleteCoupon/NEW10
+[2025-07-25 05:25:46] [INFO] GET /api/coupon/getcoupons
+[2025-07-25 05:26:45] [INFO] GET /api/coupon/getcoupons
+[2025-07-25 05:26:53] [INFO] POST /api/coupon/deleteCoupon/NONVEG
+[2025-07-25 05:27:24] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-25 05:29:17] [INFO] GET /api/storeAdmin/statistics
+[2025-07-25 05:29:37] [INFO] POST /api/storeAdmin/login
+[2025-07-25 05:29:51] [INFO] POST /api/verifyUser
+[2025-07-25 05:29:53] [INFO] GET /api/storeAdmin/statistics
+[2025-07-25 05:30:10] [INFO] GET /api/storeAdmin/statistics
+[2025-07-25 05:31:03] [INFO] GET /api/coupon/getcoupons
+[2025-07-25 05:31:07] [INFO] POST /api/coupon/deleteCoupon/NONVEG
+[2025-07-25 05:33:16] [INFO] POST /api/coupon/createcoupon
+[2025-07-25 05:33:18] [INFO] GET /api/coupon/getcoupons
+[2025-07-25 05:33:18] [INFO] GET /api/storeAdmin/statistics
+[2025-07-25 05:33:18] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-25 05:33:29] [INFO] POST /api/coupon/deleteCoupon/MYCOUPON
+[2025-07-25 05:35:01] [INFO] POST /api/coupon/deleteCoupon/MYCOUPON
+[2025-07-25 05:38:36] [ERROR] Something went wrong, Please try again!
+[2025-07-25 05:38:39] [ERROR] Something went wrong, Please try again!
+[2025-07-25 05:38:42] [ERROR] Something went wrong, Please try again!
+[2025-07-25 05:38:48] [ERROR] Something went wrong, Please try again!
+[2025-07-25 05:38:51] [ERROR] Something went wrong, Please try again!
+[2025-07-25 05:39:04] [INFO] GET /api/coupon/getcoupons
+[2025-07-25 05:39:13] [INFO] POST /api/coupon/deleteCoupon/NONVEG
+[2025-07-25 05:41:04] [INFO] POST /api/coupon/deleteCoupon/NONVEG
+[2025-07-25 05:43:40] [INFO] POST /api/coupon/deleteCoupon/FLAT100
+[2025-07-25 05:43:58] [INFO] GET /api/coupon/getcoupons
+[2025-07-25 05:44:17] [INFO] POST /api/coupon/deleteCoupon/SAVE20
+[2025-07-25 05:47:40] [INFO] POST /api/coupon/deleteCoupon/MEAT
+[2025-07-25 05:49:01] [INFO] POST /api/coupon/deleteCoupon/MEAT
+[2025-07-25 05:49:03] [INFO] GET /api/coupon/getcoupons
+[2025-07-25 05:50:43] [INFO] POST /api/coupon/deleteCoupon/NONVEG
+[2025-07-25 05:50:44] [INFO] GET /api/coupon/getcoupons
+[2025-07-25 06:19:17] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 06:49:24] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 06:49:29] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 06:51:31] [ERROR] Something went wrong, Please try again!
+[2025-07-25 06:51:38] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 06:52:13] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 07:05:55] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 07:08:09] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 08:41:59] [INFO] POST /api/uploads/upload
+[2025-07-25 08:42:06] [INFO] POST /api/store/create
+[2025-07-25 08:44:01] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 09:09:00] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 09:18:51] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 09:30:58] [INFO] POST /api/uploads/upload
+[2025-07-25 09:31:06] [INFO] POST /api/uploads/upload
+[2025-07-25 09:31:13] [INFO] POST /api/store/create
+[2025-07-25 09:32:20] [INFO] POST /api/uploads/upload
+[2025-07-25 09:32:36] [INFO] POST /api/uploads/upload
+[2025-07-25 09:32:45] [INFO] POST /api/store/create
+[2025-07-25 09:38:51] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 10:02:54] [INFO] POST /api/store/create
+[2025-07-25 10:04:25] [INFO] POST /api/uploads/upload
+[2025-07-25 10:04:36] [INFO] POST /api/uploads/upload
+[2025-07-25 10:04:44] [INFO] POST /api/store/create
+[2025-07-25 10:07:59] [INFO] POST /api/store/create
+[2025-07-25 10:08:41] [INFO] POST /api/store/create
+[2025-07-25 10:11:58] [INFO] POST /api/store/create
+[2025-07-25 10:16:24] [ERROR] Something went wrong, Please try again!
+[2025-07-25 10:16:27] [INFO] POST /api/store/create
+[2025-07-25 10:17:13] [INFO] POST /api/uploads/upload
+[2025-07-25 10:17:23] [INFO] POST /api/uploads/upload
+[2025-07-25 10:17:31] [INFO] POST /api/store/create
+[2025-07-25 10:18:06] [INFO] POST /api/uploads/upload
+[2025-07-25 10:18:16] [INFO] POST /api/uploads/upload
+[2025-07-25 10:18:25] [INFO] POST /api/store/create
+[2025-07-25 10:19:13] [INFO] POST /api/uploads/upload
+[2025-07-25 10:19:22] [INFO] POST /api/uploads/upload
+[2025-07-25 10:19:31] [INFO] POST /api/store/create
+[2025-07-25 10:20:00] [INFO] POST /api/uploads/upload
+[2025-07-25 10:20:08] [INFO] POST /api/uploads/upload
+[2025-07-25 10:20:16] [INFO] POST /api/store/create
+[2025-07-25 10:22:24] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 10:22:28] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 10:22:39] [INFO] GET /uploads/1753438800650-1753111687667-file-sample_150kB-3.pdf
+[2025-07-25 10:22:41] [INFO] GET /uploads/1753438800650-1753111687667-file-sample_150kB-3.pdf
+[2025-07-25 10:23:46] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 10:26:18] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 10:26:32] [INFO] PUT /api/store/update
+[2025-07-25 10:27:58] [INFO] PUT /api/store/update
+[2025-07-25 10:28:24] [INFO] PUT /api/store/update
+[2025-07-25 10:28:28] [INFO] PUT /api/store/update
+[2025-07-25 10:28:50] [INFO] PUT /api/store/update
+[2025-07-25 10:29:08] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 10:30:34] [INFO] PUT /api/store/update
+[2025-07-25 10:32:42] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 10:33:22] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 10:42:53] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 10:45:14] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 10:46:06] [INFO] PUT /api/store/update
+[2025-07-25 10:47:11] [INFO] PUT /api/store/update
+[2025-07-25 10:49:08] [INFO] PUT /api/store/update
+[2025-07-25 10:49:09] [INFO] PUT /api/store/update
+[2025-07-25 10:50:02] [INFO] PUT /api/store/update
+[2025-07-25 10:50:13] [INFO] PUT /api/store/update
+[2025-07-25 10:50:16] [INFO] PUT /api/store/update
+[2025-07-25 10:50:28] [INFO] PUT /api/store/update
+[2025-07-25 10:50:30] [INFO] PUT /api/store/update
+[2025-07-25 10:50:31] [INFO] PUT /api/store/update
+[2025-07-25 10:50:32] [INFO] PUT /api/store/update
+[2025-07-25 10:50:32] [INFO] PUT /api/store/update
+[2025-07-25 10:50:32] [INFO] PUT /api/store/update
+[2025-07-25 10:50:33] [INFO] PUT /api/store/update
+[2025-07-25 10:50:33] [INFO] PUT /api/store/update
+[2025-07-25 10:51:31] [INFO] PUT /api/store/update
+[2025-07-25 10:51:32] [INFO] PUT /api/store/update
+[2025-07-25 10:51:33] [INFO] PUT /api/store/update
+[2025-07-25 10:51:37] [INFO] PUT /api/store/update
+[2025-07-25 10:52:04] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 10:54:09] [INFO] PUT /api/store/update
+[2025-07-25 10:54:44] [INFO] PUT /api/store/update
+[2025-07-25 10:57:34] [INFO] PUT /api/store/update
+[2025-07-25 10:58:33] [INFO] PUT /api/store/update
+[2025-07-25 11:00:35] [INFO] PUT /api/store/update
+[2025-07-25 11:12:24] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 11:13:34] [INFO] PUT /api/store/update
+[2025-07-25 11:14:16] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 11:16:06] [INFO] PUT /api/store/update
+[2025-07-25 11:16:55] [INFO] PUT /api/store/update
+[2025-07-25 11:17:27] [INFO] PUT /api/store/update
+[2025-07-25 11:17:54] [INFO] PUT /api/store/update
+[2025-07-25 11:18:14] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 11:19:11] [INFO] PUT /api/store/update
+[2025-07-25 11:22:08] [INFO] PUT /api/store/update
+[2025-07-25 11:22:21] [INFO] PUT /api/store/update
+[2025-07-25 11:24:41] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 11:24:52] [INFO] PUT /api/store/update
+[2025-07-25 11:26:03] [INFO] PUT /api/store/update
+[2025-07-25 11:27:36] [INFO] PUT /api/store/update
+[2025-07-25 11:27:53] [INFO] PUT /api/store/update
+[2025-07-25 11:28:05] [INFO] PUT /api/store/update
+[2025-07-25 11:28:32] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 11:41:26] [INFO] PUT /api/store/update
+[2025-07-25 11:41:48] [INFO] GET /api/products/paginated/1b24413c-2858-4a3b-aeef-70a82860e330
+[2025-07-25 11:43:16] [INFO] PUT /api/store/update
+[2025-07-25 11:46:39] [INFO] PUT /api/store/update
+[2025-07-25 11:48:29] [ERROR] Something went wrong, Please try again!
+[2025-07-25 11:48:32] [ERROR] Something went wrong, Please try again!
+[2025-07-25 11:48:34] [ERROR] Something went wrong, Please try again!
+[2025-07-25 11:48:37] [ERROR] Something went wrong, Please try again!
+[2025-07-25 11:48:39] [ERROR] Something went wrong, Please try again!
+[2025-07-25 11:48:42] [ERROR] Something went wrong, Please try again!
+[2025-07-25 11:48:51] [INFO] PUT /api/store/update
+[2025-07-25 11:49:45] [ERROR] Something went wrong, Please try again!
+[2025-07-25 11:49:51] [ERROR] Something went wrong, Please try again!
+[2025-07-25 11:49:58] [INFO] PUT /api/store/update
+[2025-07-25 11:50:09] [ERROR] Something went wrong, Please try again!
+[2025-07-25 11:50:14] [ERROR] Something went wrong, Please try again!
+[2025-07-25 11:50:21] [ERROR] Something went wrong, Please try again!
+[2025-07-25 11:50:25] [ERROR] Something went wrong, Please try again!
+[2025-07-25 11:50:34] [ERROR] Something went wrong, Please try again!
+[2025-07-25 11:50:39] [ERROR] Something went wrong, Please try again!
+[2025-07-25 11:50:41] [ERROR] Something went wrong, Please try again!
+[2025-07-25 11:50:43] [INFO] PUT /api/store/update
+[2025-07-25 11:51:34] [ERROR] Something went wrong, Please try again!
+[2025-07-25 11:51:39] [ERROR] Something went wrong, Please try again!
+[2025-07-25 11:51:40] [ERROR] Something went wrong, Please try again!
+[2025-07-25 11:52:39] [INFO] PUT /api/store/update
+[2025-07-25 11:52:59] [INFO] PUT /api/store/update
+[2025-07-25 11:53:22] [INFO] PUT /api/store/update
+[2025-07-25 11:57:50] [ERROR] Something went wrong, Please try again!
+[2025-07-25 11:57:53] [ERROR] Something went wrong, Please try again!
+[2025-07-25 11:58:12] [INFO] PUT /api/store/update
+[2025-07-25 11:58:24] [INFO] PUT /api/store/update
+[2025-07-25 11:58:50] [ERROR] Something went wrong, Please try again!
+[2025-07-25 12:00:24] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 12:01:06] [INFO] PUT /api/store/update
+[2025-07-25 12:02:47] [INFO] PUT /api/store/update
+[2025-07-25 12:02:48] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 12:05:05] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 12:05:05] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 12:05:13] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 12:05:29] [INFO] PUT /api/store/update
+[2025-07-25 12:05:29] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 12:05:30] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 12:05:39] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 12:05:42] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 12:16:16] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-25 12:16:16] [INFO] GET /api/storeAdmin/statistics
+[2025-07-25 12:25:16] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-25 12:27:04] [ERROR] Something went wrong, Please try again!
+[2025-07-25 12:27:07] [INFO] GET /api/storeAdmin/statistics
+[2025-07-25 12:27:07] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-25 12:27:24] [INFO] GET /api/storeAdmin/statistics
+[2025-07-25 12:27:27] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-25 12:27:28] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-25 12:27:33] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-25 12:27:43] [INFO] GET /api/storeAdmin/statistics
+[2025-07-25 12:27:48] [INFO] GET /api/storeAdmin/statistics
+[2025-07-25 12:28:01] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 12:29:12] [INFO] GET /api/storeAdmin/statistics
+[2025-07-25 13:17:42] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-25 13:17:42] [INFO] GET /api/storeAdmin/statistics
+[2025-07-25 13:17:55] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 13:18:04] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-25 13:18:04] [INFO] GET /api/storeAdmin/statistics
+[2025-07-25 13:18:04] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 13:23:20] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 13:24:02] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 13:25:30] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 13:28:11] [INFO] PUT /api/store/update
+[2025-07-25 13:28:42] [INFO] PUT /api/store/update
+[2025-07-25 13:29:07] [INFO] PUT /api/store/update
+[2025-07-25 13:30:01] [INFO] PUT /api/store/update
+[2025-07-25 13:31:00] [INFO] PUT /api/store/update
+[2025-07-25 13:31:18] [INFO] PUT /api/store/update
+[2025-07-25 13:31:29] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 13:31:47] [INFO] PUT /api/store/update
+[2025-07-25 13:32:20] [INFO] PUT /api/store/update
+[2025-07-25 13:32:47] [INFO] PUT /api/store/update
+[2025-07-25 13:33:55] [INFO] PUT /api/store/update
+[2025-07-25 13:34:56] [INFO] PUT /api/store/update
+[2025-07-25 13:35:31] [INFO] PUT /api/store/update
+[2025-07-25 13:37:15] [INFO] PUT /api/store/update
+[2025-07-25 13:37:16] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 13:37:17] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 13:37:26] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 13:37:29] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 13:39:15] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 13:41:02] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 13:41:04] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 13:43:06] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 13:43:13] [INFO] PUT /api/store/update
+[2025-07-25 13:43:13] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 13:43:14] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 13:43:20] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-25 13:43:38] [INFO] GET /api/store/getStoresByStoreAdminId

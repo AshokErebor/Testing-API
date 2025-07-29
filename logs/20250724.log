@@ -1,0 +1,664 @@
+[2025-07-24 05:06:19] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 05:06:53] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 05:07:19] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 05:07:30] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 05:08:44] [INFO] GET /api/order/transactions?page=2&ItemRequest=10
+[2025-07-24 05:08:48] [INFO] GET /api/order/transactions?page=3&ItemRequest=10
+[2025-07-24 05:10:44] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 05:11:01] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 05:11:30] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 05:11:45] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 05:11:47] [INFO] GET /api/order/transactions?page=2&ItemRequest=10
+[2025-07-24 05:11:48] [INFO] GET /api/order/transactions?page=3&ItemRequest=10
+[2025-07-24 05:12:29] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 05:12:31] [INFO] GET /api/order/transactions?page=2&ItemRequest=10
+[2025-07-24 05:12:32] [INFO] GET /api/order/transactions?page=3&ItemRequest=10
+[2025-07-24 05:12:44] [INFO] GET /api/order/transactions?page=4&ItemRequest=10
+[2025-07-24 05:13:10] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 05:23:08] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 05:25:17] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 05:25:17] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 05:27:11] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 05:31:43] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 05:31:59] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 05:31:59] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 05:35:35] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 05:39:37] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 05:39:37] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 05:40:01] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 05:48:30] [ERROR] Something went wrong, Please try again!
+[2025-07-24 05:48:30] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 05:48:30] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 05:48:32] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 05:48:37] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 05:48:40] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 05:48:41] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 05:50:15] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 05:50:15] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 05:50:15] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 05:50:15] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 05:50:16] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 05:50:27] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 05:50:37] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 05:50:42] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 05:50:47] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 05:53:23] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 05:53:23] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 05:53:23] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 05:53:23] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 05:53:23] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 05:55:54] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 05:55:54] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 05:55:54] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 05:55:54] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 05:55:54] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 05:55:56] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 05:59:43] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 05:59:43] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 05:59:43] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 05:59:43] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 05:59:43] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 06:02:53] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:02:59] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:03:06] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:03:52] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:03:57] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:06:24] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 06:06:24] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 06:06:24] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 06:06:24] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 06:06:24] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:06:25] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 06:07:35] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:07:41] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:07:44] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:08:26] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:08:28] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:08:50] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:09:06] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:09:09] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:09:14] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:09:19] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:09:37] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:09:47] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:09:50] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:09:54] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:10:05] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:10:07] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:10:10] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:10:13] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:10:16] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:10:20] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:10:22] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:10:24] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:10:37] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:10:39] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:10:42] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:10:47] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:11:02] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:11:21] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:11:27] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:11:45] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:11:59] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:12:02] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:12:03] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:12:07] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:12:12] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:12:24] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:12:34] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:16:45] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 06:16:45] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 06:16:45] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 06:16:45] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:16:45] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 06:16:46] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 06:17:39] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:17:41] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:17:43] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:17:46] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:17:54] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:18:00] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:18:07] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:18:10] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:18:18] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:19:22] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:19:34] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:19:40] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:19:58] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:20:01] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:21:09] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:21:20] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:21:31] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:21:33] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:22:37] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:24:21] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:24:51] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:24:54] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:24:57] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:25:03] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:26:38] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 06:26:38] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 06:26:38] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 06:26:38] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 06:26:38] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:26:53] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 06:27:05] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:27:10] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:27:13] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:27:19] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:28:24] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 06:28:24] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 06:28:24] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 06:28:24] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:28:36] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 06:28:39] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:29:14] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:29:20] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:30:48] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:30:48] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 06:30:48] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 06:30:48] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 06:30:48] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 06:30:51] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:31:21] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:31:38] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:31:40] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:32:02] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:32:12] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:32:21] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:32:26] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:32:28] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:32:31] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:32:37] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:32:40] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:32:45] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:33:45] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:34:02] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:34:20] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:34:35] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:35:51] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:36:03] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:36:28] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:36:30] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:37:31] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:38:03] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:38:58] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:39:00] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:39:17] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:39:21] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:40:07] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:40:13] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:40:21] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:40:24] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:40:28] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:40:34] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:40:37] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:40:55] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:41:05] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:41:10] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:41:12] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:41:16] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:41:52] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:41:57] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:42:01] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:42:05] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:42:17] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:42:18] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:42:30] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:42:55] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:43:03] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:43:51] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:43:59] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:44:12] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:44:13] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:44:18] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:44:20] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:44:33] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:44:41] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:44:43] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:44:45] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:44:49] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:44:54] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:44:56] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:44:58] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:45:00] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:45:25] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:46:51] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 06:46:51] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 06:46:51] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 06:46:51] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 06:46:51] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:47:08] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 06:52:06] [ERROR] Something went wrong, Please try again!
+[2025-07-24 06:52:13] [ERROR] Something went wrong, Please try again!
+[2025-07-24 06:52:19] [ERROR] Something went wrong, Please try again!
+[2025-07-24 06:52:23] [ERROR] Something went wrong, Please try again!
+[2025-07-24 06:52:28] [ERROR] Something went wrong, Please try again!
+[2025-07-24 06:52:50] [ERROR] Something went wrong, Please try again!
+[2025-07-24 06:52:55] [ERROR] Something went wrong, Please try again!
+[2025-07-24 06:53:11] [ERROR] Something went wrong, Please try again!
+[2025-07-24 06:59:04] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 06:59:04] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 06:59:04] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 06:59:04] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 06:59:04] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 06:59:05] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 06:59:58] [INFO] POST /api/coupon/createcoupon
+[2025-07-24 07:00:29] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:02:52] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:02:55] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:02:57] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:03:02] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:03:04] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:03:07] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:03:15] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:03:19] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:03:23] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:03:25] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:03:28] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:03:30] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:03:34] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:03:40] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:04:12] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:04:50] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:04:53] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:05:30] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:05:45] [INFO] POST /api/coupon/createcoupon
+[2025-07-24 07:06:34] [INFO] POST /api/coupon/createcoupon
+[2025-07-24 07:06:35] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 07:06:35] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 07:06:35] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 07:06:35] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 07:06:35] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:06:36] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 07:06:59] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:08:10] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:08:29] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:09:23] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 07:09:25] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 08:36:26] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:39:22] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:39:41] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:39:53] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:39:56] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:40:39] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:40:46] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:40:48] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:40:50] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:40:53] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:41:24] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:41:29] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:41:36] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:41:39] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:41:41] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:43:57] [INFO] GET /api/coupon/deleteCoupon/FIRST10
+[2025-07-24 08:44:01] [INFO] POST /api/coupon/deleteCoupon/FIRST10
+[2025-07-24 08:44:04] [ERROR] An error occured:
+[2025-07-24 08:44:04] [ERROR] An error occured:
+[2025-07-24 08:44:04] [ERROR] An error occured:
+[2025-07-24 08:44:21] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:44:22] [INFO] POST /api/coupon/deleteCoupon/FIRST10
+[2025-07-24 08:44:24] [ERROR] An error occured:
+[2025-07-24 08:44:24] [ERROR] An error occured:
+[2025-07-24 08:44:24] [ERROR] An error occured:
+[2025-07-24 08:44:32] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:44:35] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:45:20] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:45:22] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:45:24] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:45:27] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:45:30] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:45:30] [INFO] POST /api/coupon/deleteCoupon/FIRST10
+[2025-07-24 08:45:33] [ERROR] An error occured:
+[2025-07-24 08:45:33] [ERROR] An error occured:
+[2025-07-24 08:45:33] [ERROR] An error occured:
+[2025-07-24 08:46:41] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:46:47] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:46:50] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:46:53] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:46:56] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:46:57] [INFO] POST /api/coupon/deleteCoupon/FIRST10
+[2025-07-24 08:46:59] [ERROR] An error occured:
+[2025-07-24 08:46:59] [ERROR] An error occured:
+[2025-07-24 08:46:59] [ERROR] An error occured:
+[2025-07-24 08:50:35] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:50:39] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:50:41] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:50:44] [INFO] POST /api/coupon/deleteCoupon/FIRST10
+[2025-07-24 08:50:46] [ERROR] An error occured:
+[2025-07-24 08:50:46] [ERROR] An error occured:
+[2025-07-24 08:51:03] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:51:06] [INFO] POST /api/coupon/deleteCoupon/FIRST10
+[2025-07-24 08:51:08] [ERROR] An error occured:
+[2025-07-24 08:51:08] [ERROR] An error occured:
+[2025-07-24 08:51:24] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:51:25] [INFO] POST /api/coupon/deleteCoupon/FIRST10
+[2025-07-24 08:51:27] [ERROR] An error occured:
+[2025-07-24 08:51:37] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:51:46] [INFO] POST /api/coupon/deleteCoupon/FIRST10
+[2025-07-24 08:51:49] [ERROR] An error occured:
+[2025-07-24 08:52:12] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:52:18] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:52:23] [INFO] POST /api/coupon/deleteCoupon/FIRST10
+[2025-07-24 08:52:26] [ERROR] An error occured:
+[2025-07-24 08:52:43] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:53:14] [INFO] POST /api/coupon/deleteCoupon/FIRST10
+[2025-07-24 08:53:16] [ERROR] An error occured:
+[2025-07-24 08:53:25] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:53:27] [ERROR] Something went wrong, Please try again!
+[2025-07-24 08:53:47] [INFO] POST /api/coupon/deleteCoupon/FLAT20
+[2025-07-24 08:55:38] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 08:55:38] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 08:55:38] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 08:55:38] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 08:55:38] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 08:55:39] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 08:55:56] [ERROR] Something went wrong, Please try again!
+[2025-07-24 09:06:48] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 09:06:48] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 09:06:48] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:06:48] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 09:06:48] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 09:06:49] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 09:07:32] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 09:07:32] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:07:32] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 09:07:32] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 09:07:32] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 09:07:33] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 09:13:01] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 09:13:01] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 09:13:01] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 09:13:01] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:13:01] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 09:13:02] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 09:14:49] [INFO] POST /api/coupon/createcoupon
+[2025-07-24 09:14:49] [INFO] POST /api/coupon/createcoupon
+[2025-07-24 09:14:57] [INFO] POST /api/coupon/createcoupon
+[2025-07-24 09:14:57] [INFO] POST /api/coupon/createcoupon
+[2025-07-24 09:15:27] [INFO] POST /api/coupon/createcoupon
+[2025-07-24 09:15:27] [INFO] POST /api/coupon/createcoupon
+[2025-07-24 09:17:48] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 09:17:48] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 09:17:48] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 09:17:48] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:17:48] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 09:19:20] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 09:19:20] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:19:20] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 09:19:20] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 09:19:20] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 09:19:20] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 09:20:58] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 09:20:58] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:20:58] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 09:20:58] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 09:20:58] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 09:20:58] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 09:24:31] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 09:24:31] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 09:24:31] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 09:24:31] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 09:24:31] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:24:42] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 09:24:42] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 09:24:42] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 09:24:42] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 09:24:42] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:24:54] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 09:24:54] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 09:24:54] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 09:24:54] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 09:24:54] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:25:04] [ERROR] An error occured:
+[2025-07-24 09:25:04] [ERROR] An error occured:
+[2025-07-24 09:25:04] [ERROR] An error occured:
+[2025-07-24 09:25:04] [ERROR] An error occured:
+[2025-07-24 09:25:08] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 09:25:08] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 09:25:08] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:25:08] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 09:25:08] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 09:25:15] [ERROR] An error occured:
+[2025-07-24 09:25:15] [ERROR] An error occured:
+[2025-07-24 09:25:15] [ERROR] An error occured:
+[2025-07-24 09:25:15] [ERROR] An error occured:
+[2025-07-24 09:25:15] [ERROR] An error occured:
+[2025-07-24 09:25:15] [ERROR] An error occured:
+[2025-07-24 09:25:15] [ERROR] An error occured:
+[2025-07-24 09:25:15] [ERROR] An error occured:
+[2025-07-24 09:26:42] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:31:45] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 09:31:45] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 09:31:46] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 09:31:46] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 09:31:46] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:31:47] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 09:32:40] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:35:29] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:36:25] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 09:36:25] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 09:36:25] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 09:36:25] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:36:25] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 09:36:32] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:38:02] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:38:41] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:39:04] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:39:09] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:39:17] [INFO] POST /api/coupon/createcoupon
+[2025-07-24 09:39:47] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:39:50] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:42:58] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:44:02] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 09:44:02] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 09:44:02] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:44:02] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 09:44:02] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 09:44:03] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 09:48:28] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:50:06] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:50:15] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:51:09] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:52:44] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:53:16] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:53:18] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:55:30] [INFO] POST /api/coupon/createcoupon
+[2025-07-24 09:55:33] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:55:35] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:55:59] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 09:55:59] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 09:55:59] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 09:55:59] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 09:55:59] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 09:56:00] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 10:17:10] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 10:17:40] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 10:20:11] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 10:31:36] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 10:31:44] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 10:32:41] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 10:37:26] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 10:39:01] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 10:39:05] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 10:39:06] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 10:39:08] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 10:42:21] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 10:42:21] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 10:42:21] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 10:42:21] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 10:42:21] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 10:42:22] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 10:43:42] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 10:43:42] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 10:43:42] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 10:43:42] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 10:43:42] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 10:43:45] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 11:39:16] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 11:40:37] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 11:45:38] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 11:52:01] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 11:52:57] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 11:52:57] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 11:52:57] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 11:52:57] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 11:52:57] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 11:52:58] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 11:54:09] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 11:54:18] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 11:54:22] [INFO] GET /api/order/transactions?page=2&ItemRequest=10
+[2025-07-24 11:54:22] [INFO] GET /api/order/transactions?page=2&ItemRequest=10
+[2025-07-24 11:55:51] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:00:38] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:01:34] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:01:34] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 12:01:34] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 12:01:34] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 12:01:34] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 12:01:34] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 12:02:30] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:05:43] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 12:05:43] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 12:05:43] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 12:05:43] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:05:43] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 12:05:44] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 12:05:54] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 12:05:54] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 12:05:55] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 12:06:06] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 12:06:06] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 12:06:07] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 12:06:20] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 12:06:20] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 12:06:21] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 12:06:56] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:07:07] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:07:19] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:07:34] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:07:50] [ERROR] An error occured:
+[2025-07-24 12:07:50] [ERROR] An error occured:
+[2025-07-24 12:07:50] [ERROR] An error occured:
+[2025-07-24 12:07:50] [ERROR] An error occured:
+[2025-07-24 12:07:50] [ERROR] An error occured:
+[2025-07-24 12:07:50] [ERROR] An error occured:
+[2025-07-24 12:07:50] [ERROR] An error occured:
+[2025-07-24 12:07:50] [ERROR] An error occured:
+[2025-07-24 12:07:50] [ERROR] An error occured:
+[2025-07-24 12:07:50] [ERROR] An error occured:
+[2025-07-24 12:07:50] [ERROR] An error occured:
+[2025-07-24 12:07:50] [ERROR] An error occured:
+[2025-07-24 12:07:50] [ERROR] An error occured:
+[2025-07-24 12:07:50] [ERROR] An error occured:
+[2025-07-24 12:07:50] [ERROR] An error occured:
+[2025-07-24 12:07:50] [ERROR] An error occured:
+[2025-07-24 12:07:50] [ERROR] An error occured:
+[2025-07-24 12:07:50] [ERROR] An error occured:
+[2025-07-24 12:07:51] [ERROR] An error occured:
+[2025-07-24 12:07:51] [ERROR] An error occured:
+[2025-07-24 12:07:51] [ERROR] An error occured:
+[2025-07-24 12:07:51] [ERROR] An error occured:
+[2025-07-24 12:07:51] [ERROR] An error occured:
+[2025-07-24 12:07:51] [ERROR] An error occured:
+[2025-07-24 12:07:51] [ERROR] An error occured:
+[2025-07-24 12:07:51] [ERROR] An error occured:
+[2025-07-24 12:07:55] [ERROR] An error occured:
+[2025-07-24 12:07:55] [ERROR] An error occured:
+[2025-07-24 12:08:12] [ERROR] An error occured:
+[2025-07-24 12:08:12] [ERROR] An error occured:
+[2025-07-24 12:08:12] [ERROR] An error occured:
+[2025-07-24 12:08:12] [ERROR] An error occured:
+[2025-07-24 12:08:12] [ERROR] An error occured:
+[2025-07-24 12:08:12] [ERROR] An error occured:
+[2025-07-24 12:10:37] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:11:47] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 12:11:47] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 12:11:47] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 12:11:47] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 12:11:47] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:11:48] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 12:14:58] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:14:58] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 12:14:58] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 12:14:58] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 12:14:58] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 12:15:03] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 12:15:53] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 12:15:53] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 12:15:53] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 12:15:53] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 12:15:53] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:21:36] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:24:21] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:27:35] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:27:52] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 12:28:00] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:29:28] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:30:41] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 12:30:41] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 12:31:13] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:35:16] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:35:16] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 12:35:16] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 12:35:16] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 12:35:16] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 12:36:34] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:36:55] [INFO] POST /api/coupon/createcoupon
+[2025-07-24 12:39:17] [INFO] POST /api/coupon/deleteCoupon/NEW10
+[2025-07-24 12:40:45] [INFO] POST /api/coupon/deleteCoupon/ROOTED10
+[2025-07-24 12:40:47] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:40:51] [INFO] POST /api/coupon/deleteCoupon/ROOTED10
+[2025-07-24 12:41:39] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 12:41:39] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 12:41:39] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 12:41:39] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 12:41:39] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 12:41:44] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-07-24 13:26:50] [INFO] POST /api/storeAdmin/login
+[2025-07-24 13:27:03] [INFO] POST /api/verifyotp
+[2025-07-24 13:29:44] [ERROR] Something went wrong, Please try again!
+[2025-07-24 13:31:32] [INFO] POST /api/storeAdmin/login
+[2025-07-24 13:31:43] [INFO] POST /api/verifyUser
+[2025-07-24 13:31:44] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 13:32:26] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 13:32:34] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 13:32:45] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 13:32:48] [INFO] POST /api/coupon/deleteCoupon/ROOTED10
+[2025-07-24 13:34:00] [INFO] POST /api/coupon/deleteCoupon/ROOTED10
+[2025-07-24 13:34:03] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 13:34:12] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 13:34:16] [INFO] POST /api/coupon/deleteCoupon/ROOTED10
+[2025-07-24 13:35:08] [INFO] POST /api/coupon/deleteCoupon/ROOTED10
+[2025-07-24 13:35:27] [INFO] POST /api/coupon/deleteCoupon/ROOTED10
+[2025-07-24 13:35:32] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 13:36:33] [INFO] POST /api/coupon/deleteCoupon/NEW10
+[2025-07-24 13:37:36] [INFO] POST /api/coupon/deleteCoupon/NEW10
+[2025-07-24 13:38:14] [INFO] DELETE /api/coupon/deleteCoupon/NEW10
+[2025-07-24 13:39:07] [INFO] DELETE /api/coupon/deleteCoupon/NEW10
+[2025-07-24 13:39:40] [INFO] DELETE /api/coupon/deleteCoupon/NONVEG
+[2025-07-24 13:41:16] [INFO] POST /api/coupon/deleteCoupon/NEW10
+[2025-07-24 13:41:49] [INFO] POST /api/coupon/deleteCoupon/NEW10
+[2025-07-24 13:42:31] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 13:48:41] [ERROR] Something went wrong, Please try again!
+[2025-07-24 13:48:43] [INFO] POST /api/coupon/deleteCoupon/MEAT
+[2025-07-24 13:50:32] [INFO] POST /api/storeAdmin/login
+[2025-07-24 13:50:39] [INFO] POST /api/storeAdmin/login
+[2025-07-24 13:50:49] [INFO] POST /api/verifyUser
+[2025-07-24 13:50:50] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 13:51:09] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 13:51:47] [INFO] POST /api/storeAdmin/login
+[2025-07-24 13:51:56] [INFO] POST /api/verifyUser
+[2025-07-24 13:51:58] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 13:52:05] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 13:52:14] [INFO] GET /api/storeAdmin/statistics
+[2025-07-24 13:52:19] [INFO] GET /api/coupon/getcoupons
+[2025-07-24 13:52:27] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-07-24 13:52:33] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 13:52:36] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-07-24 13:52:41] [INFO] GET /api/products/storeAdmin/undefined
+[2025-07-24 13:52:43] [INFO] GET /api/products/storeAdmin/undefined
+[2025-07-24 13:52:45] [INFO] GET /api/products/storeAdmin/undefined
+[2025-07-24 13:52:49] [INFO] GET /api/products/storeAdmin/undefined
+[2025-07-24 13:52:55] [INFO] GET /api/order/getOrders/StoreAdmins
+[2025-07-24 13:53:03] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
