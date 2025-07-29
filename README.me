@@ -1,0 +1,109 @@
+
+
+### 📄 `README.md` (Clone & Setup Guide for a Node.js Backend App)
+
+```markdown
+# 🚀 Node.js Backend App with Azure Cosmos DB
+
+This is a Node.js backend project connected to Azure Cosmos DB using the SQL API. This guide will walk you through how to clone, install, configure, and run the project locally.
+
+---
+
+## 📦 Tech Stack
+
+- Node.js
+- Express (optional)
+- Azure Cosmos DB (SQL API)
+- dotenv
+- nodemon (for development)
+
+---
+
+## 🧾 Prerequisites
+
+Make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (v14 or newer)
+- [npm](https://www.npmjs.com/)
+- Azure Cosmos DB instance (SQL API)
+  - Endpoint
+  - Primary key
+  - Database and container
+
+---
+
+## 📥 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+```
+
+---
+
+## 📂 2. Install Dependencies
+
+```bash
+npm install
+```
+
+---
+
+## 🔐 3. Set Up Environment Variables
+
+Create a `.env` file in the root of the project and add your Cosmos DB credentials:
+
+```env
+PORT=3000
+COSMOS_ENDPOINT=https://your-account.documents.azure.com:443/
+COSMOS_KEY=your-primary-key
+COSMOS_DATABASE=your-database-name
+COSMOS_CONTAINER=your-container-name
+```
+
+---
+
+## 🏁 4. Run the Application
+
+- For **development mode** (auto-restart using `nodemon`):
+
+```bash
+npm run dev
+```
+
+- For **production mode**:
+
+```bash
+npm start
+```
+
+The server will run on the port specified in the `.env` file (default is `3000`).
+
+
+
+---
+
+## 🚫 .gitignore
+
+This project excludes sensitive files:
+
+```
+node_modules/
+.env
+```
+
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+
+## 🙋‍♂️ Questions?
+
+If you run into issues, open a GitHub Issue or contact the administrator.
+
+```
+
+---
