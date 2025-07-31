@@ -2,14 +2,15 @@ const { CosmosClient } = require("@azure/cosmos");
 const { commonMessages } = require("../constants");
 const endpoint = process.env.COSMOS_DB_URI;
 const key = process.env.COSMOS_DB_KEY;
+if (!endpoint || !key) {
+  throw new Error(
+    "Cosmos DB endpoint or key not found in environment variables."
+  );
+}
 const client = new CosmosClient({ endpoint, key });
 const databaseId = process.env.COSMOS_DB_NAME;
 const { logger } = require("../jobLogger");
-require('dotenv').config();
-
-if (!endpoint || !key) {
-  throw new Error("Cosmos DB endpoint or key not found in environment variables.");
-}
+require("dotenv").config();
 
 const createContainerIfNotExist = async (containerId) => {
   try {
@@ -137,7 +138,7 @@ const getUserDetails = async (
   phone = "",
   email = "",
   drivingLicense = "",
-  vehicleRC = "",
+  vehicleRC = ""
 ) => {
   try {
     const querySpec = {
@@ -164,7 +165,7 @@ const getUsers = async (
   phone = "",
   email = "",
   drivingLicense = "",
-  vehicleRC = "",
+  vehicleRC = ""
 ) => {
   try {
     const querySpec = {
