@@ -4,10 +4,7 @@ const { commonMessages } = require("../constants");
 const endpoint = process.env.COSMOS_DB_URI;
 const key = process.env.COSMOS_DB_KEY;
 const databaseId = process.env.COSMOS_DB_NAME;
-if (!endpoint || !key) {
-  throw new Error("Missing Cosmos DB endpoint or key. Check your environment variables.");
-}
-const client = new CosmosClient({ endpoint: process.env.COSMOS_DB_URI, key: process.env.COSMOS_DB_KEY });
+const client = new CosmosClient({endpoint, key,});
 const { logger } = require("../jobLogger");
 const createContainerIfNotExist = async (containerId) => {
   try {
