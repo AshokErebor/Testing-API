@@ -5,6 +5,11 @@ const key = process.env.COSMOS_DB_KEY;
 const client = new CosmosClient({ endpoint, key });
 const databaseId = process.env.COSMOS_DB_NAME;
 const { logger } = require("../jobLogger");
+require('dotenv').config();
+
+if (!endpoint || !key) {
+  throw new Error("Cosmos DB endpoint or key not found in environment variables.");
+}
 
 const createContainerIfNotExist = async (containerId) => {
   try {
