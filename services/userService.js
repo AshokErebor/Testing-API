@@ -1,3 +1,4 @@
+require("dotenv").config();
 const redis = require("redis");
 const responseModel = require("../models/ResponseModel");
 const { getContainer, getDataByQuery } = require("../services/cosmosService");
@@ -138,7 +139,7 @@ const getDriversByStoreAdmin = async (storeIdsList) => {
     });
     statusCount.total = Object.values(statusCount).reduce(
       (sum, value) => sum + value,
-      0,
+      0
     );
     return statusCount;
   } catch (error) {
@@ -179,7 +180,7 @@ const getAnalysticsByStoreAdmin = async (storeAdminId) => {
     }, {});
     statusCounts.total = Object.values(statusCounts).reduce(
       (sum, value) => sum + value,
-      0,
+      0
     );
     return {
       orderStatusCounts,
