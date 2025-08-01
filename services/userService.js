@@ -1,3 +1,4 @@
+const redis = require("redis");
 const responseModel = require("../models/ResponseModel");
 const { getContainer, getDataByQuery } = require("../services/cosmosService");
 const { commonMessages, ContainerIds } = require("../constants");
@@ -7,20 +8,73 @@ const {
 } = require("../services/orderService");
 const { getIdbyStoreadmin } = require("../services/storeService");
 const { logger } = require("../jobLogger");
+const client = redis.createClient({
+  username: "default",
+  password: process.env.REDIS_PASSWORD,
+  socket: {
+    host: process.env.REDIS_HOST,
+    port: process.env.REDIS_PORT,
+  },
+});
 
-// In-memory cache Map: key -> { value, expiry }
-const cache = new Map();
+(async () => {
+  if (!client.isOpen) {
+    try {
+      await client.connect();
+      global.redisClient = client;
+    } catch (error) {
+      logger.error(commonMessages.error, error);
+    }
+  }
+})();
+
+const setUserInCache = async (userId, role, data) => {
+  try {
+    if (!userId || !role || !data)
+      return new responseModel(false, commonMessages.badRequest);
+
+    const key = `${role}:${userId}`;
+    const value = JSON.stringify(data);
+    const cacheresponse = await setCache(key, value);
+    if (!cacheresponse.success) {
+      return new responseModel(false, commonMessages.failed);
+    }
+    // await client.setEx(key, 3600, value);
+
+    return new responseModel(true, commonMessages.success);
+  } catch (error) {
+    logger.error(commonMessages.errorOccured, error);
+    return new responseModel(false, commonMessages.error);
+  }
+};
+
+const getUserCache = async (userId, role) => {
+  try {
+    const key = `${role}:${userId}`;
+    const cacheData = await getCache(key);
+
+    if (!cacheData) return new responseModel(false, commonMessages.notFound);
+
+    const parsed = JSON.parse(cacheData.data);
+    return new responseModel(true, commonMessages.success, parsed);
+  } catch (error) {
+    logger.error(commonMessages.errorOccured, error);
+    return new responseModel(false, commonMessages.error);
+  }
+};
 
 const setCache = async (key, value, ttlSeconds = 3600) => {
   try {
     if (!key || value === undefined || value === null)
       return new responseModel(false, commonMessages.badRequest);
 
-    const expiry = Date.now() + ttlSeconds * 1000;
     const stringValue =
       typeof value === "string" ? value : JSON.stringify(value);
 
-    cache.set(key, { value: stringValue, expiry });
+    if (!client.isOpen) {
+      await client.connect();
+    }
+    await client.setEx(key, ttlSeconds, stringValue);
 
     return new responseModel(true, commonMessages.success);
   } catch (error) {
@@ -33,68 +87,19 @@ const getCache = async (key) => {
   try {
     if (!key) return new responseModel(false, commonMessages.badRequest);
 
-    const cached = cache.get(key);
-    if (!cached) return new responseModel(false, commonMessages.notFound);
-
-    if (Date.now() > cached.expiry) {
-      cache.delete(key);
-      return new responseModel(false, commonMessages.notFound);
+    if (!client.isOpen) {
+      await client.connect();
     }
 
-    return new responseModel(true, commonMessages.success, cached.value);
+    const data = await client.get(key);
+    if (!data) return new responseModel(false, commonMessages.failed);
+
+    return new responseModel(true, commonMessages.success, data);
   } catch (error) {
     logger.error(commonMessages.errorOccured, error);
     return new responseModel(false, commonMessages.error);
   }
 };
-
-const setUserInCache = async (userId, role, data) => {
-  try {
-    if (!userId || !role || !data)
-      return new responseModel(false, commonMessages.badRequest);
-
-    const key = `${role}:${userId}`;
-    return await setCache(key, data, 3600); // 1 hour TTL
-  } catch (error) {
-    logger.error(commonMessages.errorOccured, error);
-    return new responseModel(false, commonMessages.error);
-  }
-};
-
-const getUserCache = async (userId, role) => {
-  try {
-    if (!userId || !role)
-      return new responseModel(false, commonMessages.badRequest);
-
-    const key = `${role}:${userId}`;
-    const cacheData = await getCache(key);
-
-    if (!cacheData.success) return cacheData;
-
-    // parse cached JSON string back to object
-    const parsed = JSON.parse(cacheData.data);
-    return new responseModel(true, commonMessages.success, parsed);
-  } catch (error) {
-    logger.error(commonMessages.errorOccured, error);
-    return new responseModel(false, commonMessages.error);
-  }
-};
-
-const deleteCache = async (key) => {
-  try {
-    if (!key) return new responseModel(false, commonMessages.badRequest);
-
-    const existed = cache.delete(key);
-    if (!existed) return new responseModel(false, commonMessages.notFound);
-
-    return new responseModel(true, commonMessages.success);
-  } catch (error) {
-    logger.error(commonMessages.errorOccured, error);
-    return new responseModel(false, commonMessages.error);
-  }
-};
-
-// Your existing functions below remain unchanged
 
 const getDriversByStoreAdmin = async (storeIdsList) => {
   try {
@@ -116,7 +121,7 @@ const getDriversByStoreAdmin = async (storeIdsList) => {
     });
     statusCount.total = Object.values(statusCount).reduce(
       (sum, value) => sum + value,
-      0
+      0,
     );
     return statusCount;
   } catch (error) {
@@ -157,7 +162,7 @@ const getAnalysticsByStoreAdmin = async (storeAdminId) => {
     }, {});
     statusCounts.total = Object.values(statusCounts).reduce(
       (sum, value) => sum + value,
-      0
+      0,
     );
     return {
       orderStatusCounts,
@@ -177,7 +182,6 @@ module.exports = {
   getUserCache,
   setCache,
   getCache,
-  deleteCache,
   getAnalysticsByStoreAdmin,
   getDriversByStoreAdmin,
   getManagersByStoreAdmin,
