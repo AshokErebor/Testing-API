@@ -1,3 +1,4 @@
+require("dotenv").config();
 const redis = require("redis");
 const responseModel = require("../models/ResponseModel");
 const { getContainer, getDataByQuery } = require("../services/cosmosService");
