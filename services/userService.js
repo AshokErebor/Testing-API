@@ -1,4 +1,3 @@
-require("dotenv").config();
 const redis = require("redis");
 const responseModel = require("../models/ResponseModel");
 const { getContainer, getDataByQuery } = require("../services/cosmosService");
@@ -14,7 +13,7 @@ const client = redis.createClient({
   password: process.env.REDIS_PASSWORD,
   socket: {
     host: process.env.REDIS_HOST,
-    port: process.env.REDIS_PORT,
+    port: Number(process.env.REDIS_PORT),
     tls: true,
   },
 });
@@ -23,7 +22,6 @@ const client = redis.createClient({
   if (!client.isOpen) {
     try {
       await client.connect();
-      global.redisClient = client;
     } catch (error) {
       logger.error(commonMessages.error, error);
     }
@@ -41,7 +39,6 @@ const setUserInCache = async (userId, role, data) => {
     if (!cacheresponse.success) {
       return new responseModel(false, commonMessages.failed);
     }
-    // await client.setEx(key, 3600, value);
 
     return new responseModel(true, commonMessages.success);
   } catch (error) {
@@ -84,6 +81,24 @@ const setCache = async (key, value, ttlSeconds = 3600) => {
     return new responseModel(false, commonMessages.error);
   }
 };
+
+async function deleteCache(key) {
+  try {
+    if (!client.isOpen) {
+      await client.connect();
+    }
+    if (!key) return new responseModel(false, commonMessages.badRequest);
+    const result = await client.del(key);
+    if (result === 1) {
+      return new responseModel(true, commonMessages.success);
+    } else {
+      new responseModel(false, commonMessages.failed);
+    }
+  } catch (error) {
+    logger.error(commonMessages.errorOccured, error);
+    return new responseModel(false, commonMessages.error);
+  }
+}
 
 const getCache = async (key) => {
   try {
@@ -182,6 +197,7 @@ const getAnalysticsByStoreAdmin = async (storeAdminId) => {
 module.exports = {
   setUserInCache,
   getUserCache,
+  deleteCache,
   setCache,
   getCache,
   getAnalysticsByStoreAdmin,
