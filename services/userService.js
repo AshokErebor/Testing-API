@@ -18,7 +18,7 @@ const client = redis.createClient({
     tls: true,
   },
 });
-client.on('error', (err) => console.log('❌ Redis Client Error:', err));
+console.log("Client Created:", client);
 (async () => {
   if (!client.isOpen) {
     try {
