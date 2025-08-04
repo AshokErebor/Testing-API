@@ -9,6 +9,9 @@ const {
 } = require("../services/orderService");
 const { getIdbyStoreadmin } = require("../services/storeService");
 const { logger } = require("../jobLogger");
+console.log("Redis client Password:", process.env.REDIS_PASSWORD);
+console.log("Redis client Host:", process.env.REDIS_HOST);
+console.log("Redis client Port:", process.env.REDIS_PORT);
 const client = redis.createClient({
   username: "default",
   password: process.env.REDIS_PASSWORD,
