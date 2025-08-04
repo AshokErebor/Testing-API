@@ -16,9 +16,10 @@ const client = redis.createClient({
     host: process.env.REDIS_HOST,
     port: Number(process.env.REDIS_PORT),
     tls: true,
+    connectTimeout: 10000,
   },
 });
-console.log("Client Created:", client);
+
 (async () => {
   if (!client.isOpen) {
     try {
