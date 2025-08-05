@@ -9,11 +9,13 @@ const {
 } = require("../services/orderService");
 const { getIdbyStoreadmin } = require("../services/storeService");
 const { logger } = require("../jobLogger");
-const client = createClient({
+console.log(process.env.REDIS_PASSWORD);
+console.log(redis);
+const client = redis.createClient({
   socket: {
-    host: process.env.REDIS_HOST,
-    port: Number(process.env.REDIS_PORT),
-    tls: process.env.REDIS_TLS === "true",
+    host: 'redis.railway.internal',
+    port: 6379,
+    tls: false,
   },
   password: process.env.REDIS_PASSWORD,
 });
