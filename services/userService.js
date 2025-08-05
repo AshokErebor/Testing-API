@@ -25,6 +25,11 @@ client.on("error", (err) => console.error("Redis Client Error", err));
     try {
       await client.connect();
       global.redisClient = client;
+      console.log("✅ Connected to Redis");
+
+    await client.set("key", "Railway Works");
+    const value = await client.get("key");
+    console.log("🔄 Redis Value:", value);
     } catch (error) {
       logger.error(commonMessages.error, error);
     }
