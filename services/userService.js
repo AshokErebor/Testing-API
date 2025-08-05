@@ -1,5 +1,5 @@
-require('dotenv').config();
-const { createClient } = require("redis");
+require("dotenv").config();
+const { Redis } = require("@upstash/redis");
 const responseModel = require("../models/ResponseModel");
 const { getContainer, getDataByQuery } = require("../services/cosmosService");
 const { commonMessages, ContainerIds } = require("../constants");
@@ -9,32 +9,17 @@ const {
 } = require("../services/orderService");
 const { getIdbyStoreadmin } = require("../services/storeService");
 const { logger } = require("../jobLogger");
-console.log(process.env.REDIS_PASSWORD);
-console.log(redis);
-const client = redis.createClient({
-  socket: {
-    host: 'redis.railway.internal',
-    port: 6379,
-    tls: false,
-  },
-  password: process.env.REDIS_PASSWORD,
+const client = new Redis({
+  url: "https://special-badger-8622.upstash.io",
+  token: "ASGuAAIjcDEzNmMyMTFmZWU5ODg0NzVkODk2YzU0ODZmODA0MWM1YnAxMA",
 });
 
-client.on("error", (err) => console.error("Redis Client Error", err));
-
 (async () => {
-  if (!client.isOpen) {
-    try {
-      await client.connect();
-      global.redisClient = client;
-      console.log("✅ Connected to Redis");
-
-    await client.set("key", "Railway Works");
-    const value = await client.get("key");
-    console.log("🔄 Redis Value:", value);
-    } catch (error) {
-      logger.error(commonMessages.error, error);
-    }
+  try {
+    const pong = await client.ping();
+    console.log("Upstash Redis connected:", pong); // Should be "PONG"
+  } catch (error) {
+    console.log(commonMessages.error, error);
   }
 })();
 
@@ -45,11 +30,11 @@ const setUserInCache = async (userId, role, data) => {
 
     const key = `${role}:${userId}`;
     const value = JSON.stringify(data);
-    const cacheresponse = await setCache(key, value);
-    if (!cacheresponse.success) {
+    const cacheResponse = await setCache(key, value);
+
+    if (!cacheResponse.success) {
       return new responseModel(false, commonMessages.failed);
     }
-    // await client.setEx(key, 3600, value);
 
     return new responseModel(true, commonMessages.success);
   } catch (error) {
@@ -63,10 +48,11 @@ const getUserCache = async (userId, role) => {
     const key = `${role}:${userId}`;
     const cacheData = await getCache(key);
 
-    if (!cacheData) return new responseModel(false, commonMessages.notFound);
+    if (!cacheData.success || !cacheData.data)
+      return new responseModel(false, commonMessages.notFound);
 
-    const parsed = JSON.parse(cacheData.data);
-    return new responseModel(true, commonMessages.success, parsed);
+    //const parsed = JSON.parse(cacheData.data);
+    return new responseModel(true, commonMessages.success, cacheData.data);
   } catch (error) {
     logger.error(commonMessages.errorOccured, error);
     return new responseModel(false, commonMessages.error);
@@ -81,10 +67,8 @@ const setCache = async (key, value, ttlSeconds = 3600) => {
     const stringValue =
       typeof value === "string" ? value : JSON.stringify(value);
 
-    if (!client.isOpen) {
-      await client.connect();
-    }
-    await client.setEx(key, ttlSeconds, stringValue);
+    // Upstash TTL with EX option
+    await client.set(key, stringValue, { ex: ttlSeconds });
 
     return new responseModel(true, commonMessages.success);
   } catch (error) {
@@ -97,14 +81,26 @@ const getCache = async (key) => {
   try {
     if (!key) return new responseModel(false, commonMessages.badRequest);
 
-    if (!client.isOpen) {
-      await client.connect();
-    }
-
     const data = await client.get(key);
     if (!data) return new responseModel(false, commonMessages.failed);
 
     return new responseModel(true, commonMessages.success, data);
+  } catch (error) {
+    logger.error(commonMessages.errorOccured, error);
+    return new responseModel(false, commonMessages.error);
+  }
+};
+
+const deleteCache = async (key) => {
+  try {
+    if (!key) return new responseModel(false, commonMessages.badRequest);
+
+    const result = await client.del(key);
+    if (result === 1) {
+      return new responseModel(true, commonMessages.success);
+    } else {
+      return new responseModel(false, commonMessages.failed);
+    }
   } catch (error) {
     logger.error(commonMessages.errorOccured, error);
     return new responseModel(false, commonMessages.error);
@@ -176,10 +172,10 @@ const getAnalysticsByStoreAdmin = async (storeAdminId) => {
     );
     return {
       orderStatusCounts,
-      driversStatusCount: await getDriversByStoreAdmin(storeIdsList),
-      totalManagerCount: await getManagersByStoreAdmin(storeAdminId),
-      storeStatusCount: statusCounts,
-      productCount: await getProductCountBystoreAdmin(storeAdminId),
+      driversStatusCount: (await getDriversByStoreAdmin(storeIdsList)) || 0,
+      totalManagerCount: (await getManagersByStoreAdmin(storeAdminId)) || 0,
+      storeStatusCount: statusCounts || 0,
+      productCount: (await getProductCountBystoreAdmin(storeAdminId)) || 0,
     };
   } catch (error) {
     logger.error(commonMessages.errorOccured, error);
@@ -190,6 +186,7 @@ const getAnalysticsByStoreAdmin = async (storeAdminId) => {
 module.exports = {
   setUserInCache,
   getUserCache,
+  deleteCache,
   setCache,
   getCache,
   getAnalysticsByStoreAdmin,
