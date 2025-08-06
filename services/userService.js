@@ -17,7 +17,7 @@ const redis = new Redis({
 (async () => {
   try {
     await redis.set("name", "Railway");
-    const re = await redis.get("name");
+    const res = await redis.get("name");
     console.log("Value from Redis:", res);
     const pong = await client.ping();
     console.log("Upstash Redis connected:", pong); // Should be "PONG"
