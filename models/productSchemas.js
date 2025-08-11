@@ -21,7 +21,6 @@ const productSchema = z
     price: z.number().positive("Price must be greater than 0"),
     offerPrice: z.number().default(0),
     rating: z.number().default(0),
-    stock: z.number().min(0, "Value must be zero or positive"),
   })
   .strict();
 
