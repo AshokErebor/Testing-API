@@ -1,11 +1,11 @@
-require("dotenv").config();
 const { CosmosClient } = require("@azure/cosmos");
 const { commonMessages } = require("../constants");
 const endpoint = process.env.COSMOS_DB_URI;
 const key = process.env.COSMOS_DB_KEY;
+const client = new CosmosClient({ endpoint, key });
 const databaseId = process.env.COSMOS_DB_NAME;
-const client = new CosmosClient({endpoint, key,});
 const { logger } = require("../jobLogger");
+
 const createContainerIfNotExist = async (containerId) => {
   try {
     const { database } = await client.databases.createIfNotExists({
@@ -132,7 +132,7 @@ const getUserDetails = async (
   phone = "",
   email = "",
   drivingLicense = "",
-  vehicleRC = ""
+  vehicleRC = "",
 ) => {
   try {
     const querySpec = {
@@ -159,7 +159,7 @@ const getUsers = async (
   phone = "",
   email = "",
   drivingLicense = "",
-  vehicleRC = ""
+  vehicleRC = "",
 ) => {
   try {
     const querySpec = {

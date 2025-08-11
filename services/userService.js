@@ -11,18 +11,15 @@ const { getIdbyStoreadmin } = require("../services/storeService");
 const { logger } = require("../jobLogger");
 const client = new Redis({
   url: "https://special-badger-8622.upstash.io",
-  token: "ASGuAAIjcDEzNmMyMTFmZWU5ODg0NzVkODk2YzU0ODZmODA0MWM1YnAxMA",
+  token: process.env.REDIS_TOKEN,
 });
 
 (async () => {
   try {
-    await client.set("name", "Railway");
-    const res = await client.get("name");
-    console.log("Value from Redis:", res);
     const pong = await client.ping();
     console.log("Upstash Redis connected:", pong); // Should be "PONG"
   } catch (error) {
-    console.log(commonMessages.error, error);
+    logger.error(commonMessages.error, error);
   }
 })();
 

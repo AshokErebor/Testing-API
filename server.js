@@ -79,7 +79,6 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // cron.schedule('0 0 * * *', updateDriverDetails); // This schedule runs every day at midnight (00:00)
 // cron.schedule('0 0 * * *', updateCouponDetails);
 // cron.schedule('0 * * * *', updateScheduledDeliveries);
-
 // Start Server
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`✅ Server running on port ${PORT}`);

@@ -6,11 +6,26 @@ const {
   getDetailsByEmail,
   getUserDetails,
 } = require("../services/cosmosService");
-const { VerifyOtp, generateToken } = require("../services/otpService");
+const {
+  VerifyOtp,
+  generateToken,
+  OTPGeneration,
+} = require("../services/otpService");
 const responseModel = require("../models/ResponseModel");
 const { userMessages, commonMessages, roles } = require("../constants");
-const { getUserCache } = require("../services/userService");
+const { getUserCache, deleteCache } = require("../services/userService");
 const { logger } = require("../jobLogger");
+
+router.get("/getotp", (req, res) => {
+  try {
+    const { user, role } = req.body;
+    const otp = OTPGeneration(user, role);
+    if (otp)
+      res.status(200).json(new responseModel(true, userMessages.success));
+  } catch (error) {
+    res.status(500).json(new responseModel(false, commonMessages.error, error));
+  }
+});
 
 router.post("/verifyUser", async (req, res) => {
   try {
@@ -54,6 +69,7 @@ router.post("/verifyUser", async (req, res) => {
         .status(500)
         .json(new responseModel(false, commonMessages.failed));
     }
+    deleteCache(`${role}:${user}`);
     const token = await generateToken(userData);
     return res
       .status(200)
@@ -61,6 +77,29 @@ router.post("/verifyUser", async (req, res) => {
   } catch (error) {
     logger.error(commonMessages.errorOccured, error);
     return res.status(500).json(new responseModel(false, commonMessages.error));
+  }
+});
+
+router.post("/sendOtp", async (req, res) => {
+  try {
+    const { user, role } = req.body;
+    // console.log("hit", req.body);
+
+    if (!user || !role)
+      return res
+        .status(400)
+        .json(new responseModel(false, commonMessages.badRequest));
+
+    const response = await OTPGeneration(user, role);
+    console.log("respoonse", response);
+
+    if (!response.success)
+      return res.status(500).json(new responseModel(false, response.message));
+
+    return res.status(200).json(new responseModel(true, response.message));
+  } catch (error) {
+    logger.error(commonMessages.errorOccured, error);
+    return res.status(500).json(new responseModel(false, error.message));
   }
 });
 

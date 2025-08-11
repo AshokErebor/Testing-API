@@ -3,6 +3,7 @@ const {
   StandardCheckoutClient,
   Env,
   CreateSdkOrderRequest,
+  MetaInfo,
   RefundRequest,
 } = require("pg-sdk-node");
 const {
@@ -24,13 +25,14 @@ const {
   commonMessages,
   orderMessages,
   authMessage,
+  orderCategoriesMap,
 } = require("../constants");
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SCERET;
 const clientVirtion = 1;
 const env = Env.SANDBOX;
-const redirectUrl = "http://localhost:3000/api/status";
 const { logger } = require("../jobLogger");
+const dayjs = require("dayjs");
 const orderContainer = getContainerById("Order");
 const subscriptionContainer = getContainerById("Subscriptions");
 const storeProductContainer = getContainerById("StoreProduct");
@@ -45,14 +47,14 @@ const client = StandardCheckoutClient.getInstance(
 );
 
 async function createPayment(amount, orderId, orderType) {
-  const merchantOrderId = orderId;
-  const returnUrl = `${redirectUrl}/?orderType=${orderType}&id=${orderId}`;
+  const CALLBACK_URL = "http://localhost:3000/api/phonepe/webhook";
 
   try {
     const request = CreateSdkOrderRequest.StandardCheckoutBuilder()
-      .merchantOrderId(merchantOrderId)
-      .amount(amount)
-      .redirectUrl(returnUrl)
+      .merchantOrderId(orderId)
+      .amount(amount * 100)
+      .redirectUrl(CALLBACK_URL)
+      .metaInfo(MetaInfo.builder().udf1(orderType).udf2("udf2").build())
       .build();
 
     const response = await client.createSdkOrder(request);
@@ -67,121 +69,148 @@ async function createPayment(amount, orderId, orderType) {
 
 const handlePaymentStatus = async (req, res) => {
   try {
-    const orderType = req.query.orderType;
-    const merchantTransactionId = req.query.id;
-    const response = await client.getOrderStatus(merchantTransactionId);
-    if (response.state === "COMPLETED") {
-      if (orderType === "Subscriptions") {
-        const subscription = await getDetailsById(
-          subscriptionContainer,
-          merchantTransactionId,
-        );
-        if (!subscription) {
-          return res
-            .status(404)
-            .json(new responseModel(false, subscriptionMessages.notfound));
-        }
+    const { payload } = req.body;
+    const orderType = payload.metaInfo.udf1;
+    const orderId = payload.merchantOrderId;
+    const paymentState = payload.state;
+    const paymentDetails = payload.paymentDetails;
 
-        const transactionId = response.paymentDetails[0].transactionId;
-
-        if (!Array.isArray(subscription.payments)) {
-          subscription.payments = [];
-        }
-        subscription.payments.push({
-          transactionId,
-          paymentStatus: "COMPLETED",
-          paidAmount: subscription.totalPrice,
-          paidOn: new Date().toISOString(),
-        });
-
-        for (const deliveryDate of subscription.pendingOrderDates) {
-          const orderId = await getNextOrderId();
-          const order = {
-            id: `Order-${orderId}`,
-            customerDetails: subscription.customerDetails,
-            productDetails: subscription.products,
-            storeDetails: subscription.storeDetails,
-            subscriptionId: subscription.id,
-            scheduledDelivery: `${deliveryDate}T${subscription.deliveryTime}`,
-            status: "New",
-            deliveryCharges: 0,
-            packagingCharges: 0,
-            platformCharges: 0,
-            orderPrice: parseFloat(subscription.totalPrice),
-            orderType: "Subscription",
-            storeAdminId: subscription.storeAdminId || "",
-            PaymentDetails: {
-              paymentStatus: "COMPLETED",
-              transactionId,
-            },
-            createdOn: formatDateCustom(new Date()),
-          };
-          await createOrder(order);
-          await updateProductQuantities(order);
-        }
-        subscription.subscriptionOrderDates = [
-          ...(subscription.subscriptionOrderDates || []),
-          ...subscription.pendingOrderDates,
-        ];
-
-        subscription.pendingOrderDates = [];
-
-        await subscriptionContainer
-          .item(subscription.id, subscription.id)
-          .replace(subscription);
-        const cartItems = await getUserDetails(
-          cartItemContainer,
-          subscription.phone,
-        );
-        cartItems.products = [];
-        await cartItemContainer
-          .item(cartItems.id, cartItems.id)
-          .replace(cartItems);
-        return res
-          .status(200)
-          .json(
-            new responseModel(true, paymentMessages.paymentSuccess, response),
-          );
-      }
-
-      const order = await findOrder(merchantTransactionId);
-      order.PaymentDetails = {
-        paymentStatus: response.state,
-        transactionId: response.paymentDetails[0].transactionId,
-      };
-      if (response.state === "COMPLETED") {
-        await updateProductQuantities(order);
-        await orderContainer.item(order.id, order.id).replace(order);
-        const customerDetails = await getDetailsById(
-          customerContainer,
-          order.customerDetails.customerId,
-        );
-        const cartItems = await getUserDetails(
-          cartItemContainer,
-          customerDetails.phone,
-        );
-        cartItems.products = [];
-        await cartItemContainer
-          .item(cartItems.id, cartItems.id)
-          .replace(cartItems);
-      }
-      return res
-        .status(200)
-        .json(
-          new responseModel(true, paymentMessages.paymentSuccess, response),
-        );
-    } else {
-      return res
-        .status(500)
-        .json(
-          new responseModel(false, paymentMessages.paymentFailed, response),
-        );
+    if (orderType === orderCategoriesMap.subscriptions) {
+      return await handleSubscriptionPayment(
+        orderId,
+        paymentDetails,
+        paymentState,
+        payload,
+        res,
+      );
     }
+
+    return await handleNormalOrderPayment(
+      orderId,
+      paymentDetails,
+      paymentState,
+      payload,
+      res,
+    );
   } catch (error) {
     logger.error(commonMessages.errorOccured, error);
     return res
       .status(500)
       .json(new responseModel(false, commonMessages.errorOccured));
+  }
+};
+
+const handleSubscriptionPayment = async (
+  orderId,
+  paymentDetails,
+  paymentState,
+  payload,
+  res,
+) => {
+  const subscription = await getDetailsById(subscriptionContainer, orderId);
+  if (!subscription) {
+    return res
+      .status(404)
+      .json(new responseModel(false, subscriptionMessages.notfound));
+  }
+
+  // Add payment record
+  if (!Array.isArray(subscription.payments)) {
+    subscription.payments = [];
+  }
+
+  subscription.payments.push({
+    paymentDetails,
+    paymentStatus: paymentState,
+    paidAmount: subscription.totalPrice,
+    paidOn: new Date().toISOString(),
+  });
+
+  if (paymentState === "COMPLETED") {
+    await createSubscriptionOrders(subscription, paymentDetails);
+    await clearUserCart(subscription.phone);
+    subscription.subscriptionOrderDates = [
+      ...(subscription.subscriptionOrderDates || []),
+      ...subscription.pendingOrderDates,
+    ];
+    subscription.pendingOrderDates = [];
+  }
+
+  await subscriptionContainer
+    .item(subscription.id, subscription.id)
+    .replace(subscription);
+
+  return res
+    .status(200)
+    .json(new responseModel(true, `Payment ${paymentState}`, payload));
+};
+
+const createSubscriptionOrders = async (subscription, paymentDetails) => {
+  for (const deliveryDate of subscription.pendingOrderDates) {
+    const scheduledDelivery = dayjs(
+      `${deliveryDate}T${subscription.deliveryTime}Z`,
+    );
+    const newOrderId = await getNextOrderId();
+    const order = {
+      id: `Order-${newOrderId}`,
+      customerDetails: subscription.customerDetails,
+      productDetails: subscription.products,
+      storeDetails: subscription.storeDetails,
+      subscriptionId: subscription.id,
+      scheduledDelivery: scheduledDelivery,
+      status: "New",
+      deliveryCharges: 0,
+      packagingCharges: 0,
+      platformCharges: 0,
+      orderPrice: parseFloat(subscription.totalPrice),
+      orderType: "Subscription",
+      storeAdminId: subscription.storeAdminId || "",
+      PaymentDetails: {
+        paymentStatus: "COMPLETED",
+        paymentDetails,
+      },
+      createdOn: formatDateCustom(new Date()),
+    };
+
+    await createOrder(order);
+    await updateProductQuantities(order);
+  }
+};
+const handleNormalOrderPayment = async (
+  orderId,
+  paymentDetails,
+  paymentState,
+  payload,
+  res,
+) => {
+  const order = await findOrder(orderId);
+
+  order.PaymentDetails = {
+    paymentStatus: paymentState,
+    paymentDetails,
+  };
+
+  if (paymentState === "COMPLETED") {
+    await updateProductQuantities(order);
+  }
+
+  await orderContainer.item(order.id, order.id).replace(order);
+
+  const customerDetails = await getDetailsById(
+    customerContainer,
+    order.customerDetails.customerId,
+  );
+  await clearUserCart(customerDetails.phone);
+
+  return res
+    .status(200)
+    .json(new responseModel(true, `Payment ${paymentState}`, payload));
+};
+const clearUserCart = async (phone) => {
+  const cartItems = await getUserDetails(cartItemContainer, phone);
+  if (cartItems && cartItems.products) {
+    cartItems.products = [];
+    await cartItemContainer.item(cartItems.id, cartItems.id).replace(cartItems);
   }
 };
 

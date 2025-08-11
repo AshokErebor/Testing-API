@@ -165,6 +165,12 @@ const orderMessages = {
   outofstock: "Some products are out of stock. Please check your cart.",
   noProductinCart: "No products found in cart. Please add.",
   updateFailed: "Unable to update the order details",
+  deliveryCharges: "deliveryCharges",
+  packagingCharges: "packagingCharges",
+  platformCharges: "platformCharges",
+  subTotal: "subTotal",
+  total: "total",
+  couponDiscount: "couponDiscount",
 };
 
 const couponMessages = {
@@ -222,6 +228,26 @@ const paymentMessages = {
   refunding: "Refund is in process",
 };
 
+const orderTypesMap = {
+  active: [
+    "New",
+    "Accepted",
+    "Order packed",
+    "Driver assigned",
+    "Driver accepted",
+    "Order picked up",
+    "Out for delivery",
+  ],
+  cancelled: ["Cancelled", "Rejected"],
+  delivered: ["Delivered"],
+};
+
+const orderCategoriesMap = {
+  quick: "Quick",
+  scheduled: "Scheduled",
+  subscriptions: "Subscriptions",
+};
+
 module.exports = {
   ContainerIds,
   otpMessages,
@@ -236,4 +262,6 @@ module.exports = {
   subscriptionMessages,
   authMessage,
   paymentMessages,
+  orderTypesMap,
+  orderCategoriesMap,
 };

@@ -56,6 +56,11 @@ router.post("/signup", async (req, res) => {
       };
 
       user = await setUserInCache(email, roles.SystemAdmin, newUser);
+      if (!user.success) {
+        return res
+          .status(500)
+          .json(new responseModel(false, commonMessages.failed));
+      }
       var message = userMessages.success;
     } else {
       message = userMessages.exist;

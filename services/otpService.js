@@ -4,7 +4,7 @@ const {
   createRecord,
 } = require("../services/cosmosService");
 const { v4: uuidv4 } = require("uuid");
-// const Randomstring = require("randomstring");
+const Randomstring = require("randomstring");
 const responseModel = require("../models/ResponseModel");
 const { mail } = require("../utils/mail");
 const {
@@ -18,20 +18,19 @@ const jwt = require("jsonwebtoken");
 const twilio = require("twilio");
 const { logger } = require("../jobLogger");
 
-// function generateOtp() {
-//   try {
-//     return Randomstring.generate({ length: 6, charset: "numeric" });
-//   } catch (error) {
-//     return "645456";
-//   }
-// }
+function generateOtp() {
+  try {
+    return Randomstring.generate({ length: 6, charset: "numeric" });
+  } catch {
+    return "645456";
+  }
+}
 
 async function OTPGeneration(userId, role) {
   try {
     const container = getContainer(ContainerIds.OTP);
-    const otp = "111111";
+    const otp = generateOtp();
     const OTP_EXPIRY_MS = 5 * 60 * 1000;
-    console.log("OTP Generation for User:", userId, "Role:", role);
 
     let userotp = "";
     const query = {
@@ -73,7 +72,6 @@ async function OTPGeneration(userId, role) {
         expiresAt: expiresAt,
         otp: otp,
       };
-      console.log("New OTP Data:", newOtpData);
 
       const created = await createRecord(container, newOtpData);
       userotp = created.otp;

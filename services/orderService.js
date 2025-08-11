@@ -19,9 +19,11 @@ const {
   orderMessages,
   roles,
   subscriptionMessages,
+  orderCategoriesMap,
 } = require("../constants");
 const { logger } = require("../jobLogger");
 const { v4: uuidv4 } = require("uuid");
+const dayjs = require("dayjs");
 const subscriptionContainer = getContainer(ContainerIds.Subscriptions);
 
 async function findOrderByUser(container, id, role, offset, limit) {
@@ -86,15 +88,11 @@ async function createOrder(orderDetails) {
         orderId: newOrder.id,
       });
     }
-    const deliveryDateStr = orderDetails.scheduledDelivery?.deliveryDate;
-    const deliveryTimeStr = orderDetails.scheduledDelivery?.deliveryTime;
 
-    let deliveryStart = "";
     let discountPrice = { discount: 0 };
     let orderType = orderDetails.orderType;
 
-    if (deliveryDateStr && deliveryTimeStr) {
-      deliveryStart = `${deliveryDateStr}T${deliveryTimeStr}`;
+    if (orderDetails.scheduledDelivery) {
       orderType =
         orderDetails.orderType == "Subscription" ? "Subscription" : "Scheduled";
     }
@@ -172,7 +170,7 @@ async function createOrder(orderDetails) {
         address: orderDetails.storeDetails.storeAddress,
       },
       subscriptionId: orderDetails.subscriptionId,
-      scheduledDelivery: deliveryStart,
+      scheduledDelivery: orderDetails.scheduledDelivery,
       status: "New",
       deliveryCharges,
       packagingCharges,
@@ -183,7 +181,7 @@ async function createOrder(orderDetails) {
       createdOn: formatDateCustom(new Date()),
       PaymentDetails: {
         paymentStatus: "PENDING",
-        transactionId: "",
+        paymentDetails: [],
       },
       storeAdminId: orderDetails.storeDetails.storeAdminId || "",
     };
@@ -191,7 +189,7 @@ async function createOrder(orderDetails) {
     const paymentUrl = await createPayment(
       newOrder.orderPrice,
       newOrder.id,
-      "Quick",
+      orderCategoriesMap.quick,
     );
     if (!paymentUrl.success) {
       return new responseModel(false, "Failed to create payment URL");
@@ -536,27 +534,23 @@ async function createSubscription(
   customerDetails,
   storeDetails,
   weeksCount,
-  day,
-  deliveryTime,
+  scheduledDelivery,
   userId,
   phone,
+  couponCode,
 ) {
   const { createPayment } = require("../utils/PhonePe");
 
   try {
     // Validate inputs
     if (
-      !customerDetails ||
-      !storeDetails ||
-      !weeksCount ||
-      !day ||
-      !deliveryTime ||
-      !userId ||
-      !phone
+      (!customerDetails || !storeDetails || !weeksCount || !scheduledDelivery,
+      !userId || !phone)
     ) {
       return new responseModel(false, commonMessages.badRequest);
     }
-
+    const dt = dayjs(scheduledDelivery);
+    const day = dt.format("dddd");
     const weekdays = commonMessages.days;
     const selectedDay = weekdays.indexOf(day.toLowerCase());
 
@@ -594,7 +588,18 @@ async function createSubscription(
       }
       date.setDate(date.getDate() + 1);
     }
+    let discountPrice = { discount: 0 };
+    if (couponCode != "") {
+      discountPrice = await processCoupon(
+        couponCode,
+        userId,
+        productDetails.subTotal,
+      );
 
+      if (!discountPrice.success)
+        return new responseModel(false, discountPrice.message);
+    }
+    const deliveryTime = dt.format("HH:mm:ss");
     const newSubscription = {
       id: uuidv4(),
       phone,
@@ -612,7 +617,7 @@ async function createSubscription(
       weeksCount,
       deliveryTime,
       payments: [],
-      totalPrice: productDetails.subTotal * weeksCount,
+      totalPrice: productDetails.subTotal * weeksCount - discountPrice.discount,
       storeAdminId: storeDetails?.storeAdminId || "",
       createdDate: new Date().toISOString().slice(0, 16),
     };

@@ -71,6 +71,11 @@ router.post("/signup", async (req, res) => {
       };
 
       user = await setUserInCache(phone, roles.Driver, newUser);
+      if (!user.success) {
+        return res
+          .status(500)
+          .json(new responseModel(false, commonMessages.failed));
+      }
       var userMessage = userMessages.success;
     } else {
       userMessage = userMessages.exist;

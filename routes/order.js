@@ -35,12 +35,10 @@ router.post("/createOrder", authenticateToken, async (req, res) => {
     const { id: userId, phone } = req.user;
     const {
       customerAddress,
-      scheduledDelivery = {},
+      scheduledDelivery,
       couponCode = "",
       isSubscription,
       weeksCount,
-      day,
-      deliveryTime,
     } = req.body;
 
     if (!customerAddress)
@@ -50,7 +48,7 @@ router.post("/createOrder", authenticateToken, async (req, res) => {
     const customerDetails = await getDetailsById(customerContainer, userId);
     const storeDetails = await getNearestStore(customerAddress);
     if (isSubscription) {
-      if (!weeksCount || !day || !deliveryTime)
+      if (!weeksCount || !scheduledDelivery)
         return res
           .status(400)
           .json(new responseModel(false, commonMessages.badRequest));
@@ -59,13 +57,13 @@ router.post("/createOrder", authenticateToken, async (req, res) => {
         customerDetails,
         storeDetails,
         weeksCount,
-        day,
-        deliveryTime,
+        scheduledDelivery,
         userId,
         phone,
+        couponCode,
       );
       if (response.error)
-        return res.status(500).json(new responseModel(false, response));
+        return res.status(400).json(new responseModel(false, response));
       return res.status(200).json(response);
     }
     const orderDetails = {

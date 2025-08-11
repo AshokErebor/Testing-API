@@ -8,7 +8,7 @@ const {
 } = require("../utils/PhonePe");
 const { authenticateToken } = require("../middleware/auth");
 
-router.get("/status", handlePaymentStatus);
+router.post("/phonepe/webhook", handlePaymentStatus);
 router.get("/refund/:orderId", authenticateToken, refundProcess);
 router.get("/refundStatus/:orderId", authenticateToken, refundStatus);
 

@@ -47,10 +47,10 @@ router.post("/signup", async (req, res) => {
       };
 
       user = await setUserInCache(email, roles.StoreManager, newUser);
-      if (!user) {
+      if (!user.success) {
         return res
           .status(500)
-          .json(new responseModel(false, commonMessages.error));
+          .json(new responseModel(false, commonMessages.failed));
       }
     }
 

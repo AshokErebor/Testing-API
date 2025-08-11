@@ -86,6 +86,45 @@ router.post("/resetPassword", async (req, res) => {
   }
 });
 
+router.post("/forgotPassword", async (req, res) => {
+  try {
+    const { email, role, newPassword } = req.body;
+
+    if (!email || !role || !newPassword) {
+      return res
+        .status(400)
+        .json(new responseModel(false, commonMessages.badRequest));
+    }
+
+    const container = await getContainer(role);
+    const user = await getDetailsByEmail(container, email);
+
+    if (!user) {
+      return res
+        .status(404)
+        .json(new responseModel(false, userMessages.notfound));
+    }
+
+    // Hash and update the password
+    user.password = await bcrypt.hash(newPassword, 10);
+
+    const updatedUser = await updateRecord(container, user);
+
+    if (!updatedUser) {
+      return res
+        .status(500)
+        .json(new responseModel(false, commonMessages.failed));
+    }
+
+    return res
+      .status(200)
+      .json(new responseModel(true, userMessages.passwordUpdated));
+  } catch (error) {
+    logger.error(commonMessages.errorOccured, error);
+    return res.status(500).json(new responseModel(false, error.message));
+  }
+});
+
 router.post("/verifydetails", async (req, res) => {
   try {
     const {

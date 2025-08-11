@@ -65,6 +65,11 @@ router.post("/signup", async (req, res) => {
       };
 
       user = await setUserInCache(phone, roles.Customer, newUser);
+      if (!user.success) {
+        return res
+          .status(500)
+          .json(new responseModel(false, commonMessages.failed));
+      }
       var userMessage = userMessages.success;
     } else {
       userMessage = userMessages.exist;
@@ -141,7 +146,9 @@ router.post("/update", authenticateToken, async (req, res) => {
         .status(500)
         .json(new responseModel(false, commonMessages.failed));
 
-    return res.status(200).json(new responseModel(true, userMessages.updated));
+    return res
+      .status(200)
+      .json(new responseModel(true, userMessages.updated, updatedDetails));
   } catch (error) {
     logger.error(commonMessages.errorOccured, error);
     return res.status(500).json(new responseModel(false, error.message));

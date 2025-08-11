@@ -12,7 +12,7 @@ const productSchema = z
     frozen: z.boolean().optional().default(false),
     readytoCook: z.boolean().optional().default(false),
     insale: z.boolean().optional().default(false),
-    active: z.boolean().optional().default(false),
+    active: z.boolean().optional().default(true),
     type: z.string().min(1, "Please select valid Type"),
     value: z.number().min(1, "Value is required"),
     metrics: z.string().min(1, "Please select valid metrics"),
