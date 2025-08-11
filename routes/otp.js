@@ -62,6 +62,7 @@ router.post("/verifyUser", async (req, res) => {
           .status(404)
           .json(new responseModel(false, userMessages.notfound));
       }
+      userCache.data.verified = true;
       userData = await createRecord(container, userCache.data);
     }
     if (!userData) {
