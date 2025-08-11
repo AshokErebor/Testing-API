@@ -18,7 +18,9 @@ const {
   ContainerIds,
   productMessages,
   userMessages,
+  orderMessages,
 } = require("../constants");
+const { getTravelTime } = require("../services/mapService");
 const storeProduct = "StoreProduct";
 const cartItemContainer = getContainer(ContainerIds.CartItems);
 
@@ -257,46 +259,110 @@ router.post("/clear", authenticateToken, async (req, res) => {
     return res.status(500).json(new responseModel(false, error.message));
   }
 });
-
-router.get("/orderCharges", authenticateToken, async (req, res) => {
+router.post("/orderCharges", authenticateToken, async (req, res) => {
   try {
     const phone = req.user.phone;
-    const { couponCode, storeId } = req.body;
-    let coupondiscount = 0;
-    if (!phone) {
+    const {
+      couponCode,
+      storeId,
+      customerAddress,
+      isSubscription,
+      weekCount = 1,
+    } = req.body;
+
+    if (
+      !phone ||
+      !storeId ||
+      !customerAddress ||
+      (isSubscription && !weekCount)
+    ) {
       return res
         .status(400)
         .json(new responseModel(false, commonMessages.badRequest));
     }
-    const storeContainer = getContainer(ContainerIds.StoreDetails);
-    const store = await getDetailsById(storeContainer, storeId);
+
+    // 1. Fetch Cart Products
     const productsList = await getProductDetails(phone, storeId);
-    if (!productsList || !productsList.subTotal) {
+    if (!productsList || typeof productsList.subTotal !== "number") {
       return res
         .status(404)
-        .json(new responseModel(false, "No products found in cart"));
+        .json(new responseModel(false, orderMessages.noProductinCart));
     }
+
+    // 2. Apply Coupon (optional)
+    let coupondiscount = { discount: 0 };
     if (couponCode) {
-      coupondiscount = await processCoupon(
-        couponCode,
-        phone,
-        productsList.subTotal,
-      );
+      try {
+        coupondiscount = await processCoupon(
+          couponCode,
+          phone,
+          productsList.subTotal,
+        );
+        if (!coupondiscount.success) {
+          coupondiscount = { discount: 0 };
+        }
+      } catch (err) {
+        return res
+          .status(400)
+          .json(new responseModel(false, `Invalid coupon: ${err.message}`));
+      }
     }
+
+    // 3. Get Store Info
+    const storeContainer = getContainer(ContainerIds.StoreDetails);
+    const store = await getDetailsById(storeContainer, storeId);
+    if (!store) {
+      return res.status(404).json(new responseModel(false, "Store not found"));
+    }
+
+    // 4. Calculate Distance & Delivery Charges
+    let deliveryCharges = 0;
+    let distance = 0;
+    try {
+      distance = await getTravelTime(
+        customerAddress,
+        store.address.coordinates,
+      );
+
+      deliveryCharges =
+        distance > store.deliveryRange ? store.deliveryCharges : 0;
+    } catch {
+      return res
+        .status(400)
+        .json(
+          new responseModel(false, "Failed to calculate delivery distance"),
+        );
+    }
+
+    // 5. Calculate Packaging/Platform Charges
+    const packagingCharges = !isSubscription ? store.packagingCharges || 0 : 0;
+    const platformCharges = !isSubscription ? store.platformCharges || 0 : 0;
+
+    // 6. Total Price Calculation
+    const baseAmount = isSubscription
+      ? productsList.subTotal * weekCount
+      : productsList.subTotal;
+
+    const total = baseAmount;
+
     const chargesList = [
-      { item: "couponDiscount", value: coupondiscount.discount || 0 },
-      { item: "deliveryCharges", value: store.deliveryCharges || 0 },
-      { item: "packagingCharges", value: store.packagingCharges || 0 },
-      { item: "platformCharges", value: store.platformCharges || 0 },
-      { item: "subTotal", value: productsList.subTotal },
-      { item: "total", value: productsList.total },
+      {
+        item: orderMessages.couponDiscount,
+        value: -coupondiscount.discount || 0,
+      },
+      { item: orderMessages.deliveryCharges, value: deliveryCharges },
+      { item: orderMessages.packagingCharges, value: packagingCharges },
+      { item: orderMessages.platformCharges, value: platformCharges },
+      { item: orderMessages.subTotal, value: total },
     ];
+
     return res
       .status(200)
       .json(
         new responseModel(true, "Charges fetched successfully", chargesList),
       );
   } catch (error) {
+    logger.error("Order charges error:", error);
     return res.status(500).json(new responseModel(false, error.message));
   }
 });
