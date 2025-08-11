@@ -42,13 +42,6 @@ router.post("/upload", upload.any(), (req, res) => {
       message: error.message,
     });
   }
-
-  const fileInfos = req.files.map((file) => `/uploads/${file.filename}`);
-
-  res.json({
-    message: "Image uploaded successfully!",
-    files: fileInfos,
-  });
 });
 
 module.exports = router;
