@@ -22,7 +22,7 @@ const customerSchema = z
       .string()
       .min(1, "Please select a valid Profile Picture")
       .optional(),
-    onBoard: z.boolean().optional().default(false),
+    onboard: z.boolean().optional().default(false),
   })
   .strict();
 
