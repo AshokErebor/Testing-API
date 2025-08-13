@@ -93,7 +93,9 @@ router.put("/updateVariant", authenticateToken, async (req, res) => {
         .status(500)
         .json(new responseModel(false, commonMessages.failed));
     }
-    return res.status(200).json(new responseModel(true, productMessages.variant.updated));
+    return res
+      .status(200)
+      .json(new responseModel(true, productMessages.variant.updated));
   } catch (error) {
     logger.error(commonMessages.errorOccured, error);
     return res.status(500).json(new responseModel(false, error.message));

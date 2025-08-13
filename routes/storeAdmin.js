@@ -46,7 +46,6 @@ router.post("/signup", async (req, res) => {
 
     const { name, email, phone, password } = req.body;
 
-
     const existingUser = await getDetailsByEmail(storeAdminContainer, email);
 
     let duplicateFields = [];
@@ -88,7 +87,6 @@ router.post("/signup", async (req, res) => {
         password: hashedPassword,
         createdOn: formatDateCustom(new Date()),
       };
-
 
       user = await setUserInCache(email, roles.StoreAdmin, newUser);
       if (!user.success) {
