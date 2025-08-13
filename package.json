@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
+    "build": "npm run lint:fix && nodemon server.js"
     "lint:fix": "eslint . --fix",
     "start:env": "npm run lint:fix && node server.js",
     "server": "npm run lint:fix && nodemon server.js"
@@ -52,3 +53,4 @@
     "prettier": "^3.6.2"
   }
 }
+
