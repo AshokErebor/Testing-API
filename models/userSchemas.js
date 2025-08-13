@@ -17,7 +17,7 @@ const customerSchema = z
         message: "Date of Birth must be in DD-MM-YYYY format",
       })
       .optional(),
-    email: z.string().email("Invalid email address").optional(),
+    email: z.email("Invalid email address").optional(),
     profilePicture: z
       .string()
       .min(1, "Please select a valid Profile Picture")
@@ -32,7 +32,7 @@ const driverSchema = z
     phone: z.string().regex(/^[6-9]\d{9}$/, {
       message: "Please enter a valid 10 digit phone number.",
     }),
-    email: z.string().email("Invalid email address").optional(),
+    email: z.email("Invalid email address").optional(),
     profilePicture: z
       .string()
       .min(1, "Please select a valid Profile Picture")

@@ -10,7 +10,7 @@ const {
 const { getIdbyStoreadmin } = require("../services/storeService");
 const { logger } = require("../jobLogger");
 const client = new Redis({
-  url: "https://special-badger-8622.upstash.io",
+  url: process.env.REDIS_HOST,
   token: process.env.REDIS_TOKEN,
 });
 

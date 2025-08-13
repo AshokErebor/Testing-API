@@ -46,7 +46,6 @@ router.post("/signup", async (req, res) => {
 
     const { name, email, phone, password } = req.body;
 
-    // console.log("Signup Request Body:", req.body);
 
     const existingUser = await getDetailsByEmail(storeAdminContainer, email);
 
@@ -90,7 +89,6 @@ router.post("/signup", async (req, res) => {
         createdOn: formatDateCustom(new Date()),
       };
 
-      // console.log("New User Details:", newUser);
 
       user = await setUserInCache(email, roles.StoreAdmin, newUser);
       if (!user.success) {
@@ -98,11 +96,9 @@ router.post("/signup", async (req, res) => {
           .status(500)
           .json(new responseModel(false, commonMessages.failed));
       }
-      // console.log("User Details:", user);
     }
-    // console.log("User created successfully:", user);
+
     const response = await OTPGeneration(email, roles.StoreAdmin);
-    // console.log("OTP Generation Response:", response);
 
     if (!response.success)
       return res.status(500).json(new responseModel(false, response.message));

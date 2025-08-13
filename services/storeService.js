@@ -63,7 +63,7 @@ const addStoreProducts = async (storeId) => {
         variants: product.variants.map((variant) => ({
           variantId: variant.id,
           stock: 0,
-          price: variant.price,
+          price: variant.price || 0,
           offerPrice: variant.offerPrice || 0,
         })),
       })),

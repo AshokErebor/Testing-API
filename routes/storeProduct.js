@@ -29,7 +29,7 @@ router.post("/create/:id", authenticateToken, async (req, res) => {
           new responseModel(true, productMessages.product.added, response.data),
         );
     }
-    return res.status(500).json(new responseModel(false, response.message));
+    return res.status(201).json(new responseModel(false, response.message));
   } catch (error) {
     logger.error(commonMessages.errorOccured, error);
     return res.status(500).json(new responseModel(false, error.message));
@@ -93,7 +93,7 @@ router.put("/updateVariant", authenticateToken, async (req, res) => {
         .status(500)
         .json(new responseModel(false, commonMessages.failed));
     }
-    return res.json(new responseModel(true, productMessages.variant.updated));
+    return res.status(200).json(new responseModel(true, productMessages.variant.updated));
   } catch (error) {
     logger.error(commonMessages.errorOccured, error);
     return res.status(500).json(new responseModel(false, error.message));

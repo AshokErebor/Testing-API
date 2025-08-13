@@ -812,49 +812,6 @@ router.put(
   },
 );
 
-router.delete(
-  "/:productId/variants/:variantId/delete",
-  authenticateToken,
-  async (req, res) => {
-    try {
-      const { productId, variantId } = req.params;
-      const product = await getDetailsById(productContainer, productId);
-
-      if (!product) {
-        return res
-          .status(404)
-          .json(new responseModel(false, productMessages.product.notFound));
-      }
-
-      if (!product.variants && product.variants.length === 0) {
-        return res
-          .status(404)
-          .json(new responseModel(false, productMessages.variant.notFound));
-      }
-
-      product.variants = product.variants.filter((r) => r.id !== variantId);
-      product.stock = product.variants.reduce(
-        (total, variant) => total + variant.stock,
-        0,
-      );
-      const updatedProduct = await updateRecord(productContainer, product);
-
-      return res
-        .status(200)
-        .json(
-          new responseModel(
-            true,
-            productMessages.variant.removed,
-            updatedProduct,
-          ),
-        );
-    } catch (error) {
-      logger.error(commonMessages.errorOccured, error);
-      return res.status(500).json(new responseModel(false, error.message));
-    }
-  },
-);
-
 router.get("/paginated/:storeId", async (req, res) => {
   try {
     let { page, limit } = req.body;

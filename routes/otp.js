@@ -16,17 +16,6 @@ const { userMessages, commonMessages, roles } = require("../constants");
 const { getUserCache, deleteCache } = require("../services/userService");
 const { logger } = require("../jobLogger");
 
-router.get("/getotp", (req, res) => {
-  try {
-    const { user, role } = req.body;
-    const otp = OTPGeneration(user, role);
-    if (otp)
-      res.status(200).json(new responseModel(true, userMessages.success));
-  } catch (error) {
-    res.status(500).json(new responseModel(false, commonMessages.error, error));
-  }
-});
-
 router.post("/verifyUser", async (req, res) => {
   try {
     const { user, role, otp } = req.body;
@@ -84,7 +73,6 @@ router.post("/verifyUser", async (req, res) => {
 router.post("/sendOtp", async (req, res) => {
   try {
     const { user, role } = req.body;
-    // console.log("hit", req.body);
 
     if (!user || !role)
       return res
@@ -92,7 +80,6 @@ router.post("/sendOtp", async (req, res) => {
         .json(new responseModel(false, commonMessages.badRequest));
 
     const response = await OTPGeneration(user, role);
-    console.log("respoonse", response);
 
     if (!response.success)
       return res.status(500).json(new responseModel(false, response.message));

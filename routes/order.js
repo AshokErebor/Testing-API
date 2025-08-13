@@ -62,6 +62,7 @@ router.post("/createOrder", authenticateToken, async (req, res) => {
         phone,
         couponCode,
       );
+
       if (response.error)
         return res.status(400).json(new responseModel(false, response));
       return res.status(200).json(response);
