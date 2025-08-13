@@ -30,6 +30,7 @@ async function OTPGeneration(userId, role) {
   try {
     const container = getContainer(ContainerIds.OTP);
     const otp = generateOtp();
+    console.log("OTP:", otp);
     const OTP_EXPIRY_MS = 5 * 60 * 1000;
 
     let userotp = "";
@@ -51,10 +52,13 @@ async function OTPGeneration(userId, role) {
       const lastOtpExpiry = otpRecord.expiresAt || 0;
       const isExpired = now > lastOtpExpiry;
 
+      console.log("isExpired:", isExpired);
       if (isExpired) {
         otpRecord.otp = otp;
         otpRecord.generateTime = now;
         otpRecord.expiresAt = expiresAt;
+
+        console.log("otpRecord:", otpRecord);
 
         const { resource } = await container
           .item(otpRecord.id, otpRecord.id)
