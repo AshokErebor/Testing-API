@@ -10,7 +10,6 @@ const {
   getContainer,
   getUserDetails,
   getDetailsById,
-  formatDateCustom,
 } = require("../services/cosmosService");
 dotenv.config();
 const {
@@ -33,6 +32,7 @@ const clientVirtion = 1;
 const env = Env.SANDBOX;
 const { logger } = require("../jobLogger");
 const dayjs = require("dayjs");
+const { convertUTCtoIST } = require("./schedules");
 const orderContainer = getContainerById("Order");
 const subscriptionContainer = getContainerById("Subscriptions");
 const storeProductContainer = getContainerById("StoreProduct");
@@ -152,7 +152,7 @@ const createSubscriptionOrders = async (subscription, paymentDetails) => {
     );
     const newOrderId = await getNextOrderId();
     const order = {
-      id: `Order-${newOrderId}`,
+      id: `S${newOrderId}`,
       customerDetails: subscription.customerDetails,
       productDetails: subscription.products,
       storeDetails: subscription.storeDetails,
@@ -163,13 +163,13 @@ const createSubscriptionOrders = async (subscription, paymentDetails) => {
       packagingCharges: 0,
       platformCharges: 0,
       orderPrice: parseFloat(subscription.totalPrice),
-      orderType: "Subscription",
+      orderType: orderCategoriesMap.subscriptions,
       storeAdminId: subscription.storeAdminId || "",
       PaymentDetails: {
         paymentStatus: "COMPLETED",
         paymentDetails,
       },
-      createdOn: formatDateCustom(new Date()),
+      createdOn: convertUTCtoIST(new Date().toISOString()),
     };
 
     await createOrder(order);

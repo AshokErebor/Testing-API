@@ -4,7 +4,6 @@ const {
   getDataByQuery,
   createRecord,
   getUserDetails,
-  formatDateCustom,
   parseCreatedOn,
 } = require("../services/cosmosService");
 const {
@@ -82,9 +81,9 @@ async function createOrder(orderDetails) {
   const { createPayment } = require("../utils/PhonePe");
   try {
     const orderContainer = getContainer(ContainerIds.Order);
-    if (orderDetails.orderType == "Subscription") {
+    if (orderDetails.orderType == orderCategoriesMap.subscriptions) {
       await orderContainer.items.create(orderDetails);
-      return new responseModel(true, "Order created successfully", {
+      return new responseModel(true, orderMessages.success, {
         orderId: newOrder.id,
       });
     }
@@ -94,7 +93,9 @@ async function createOrder(orderDetails) {
 
     if (orderDetails.scheduledDelivery) {
       orderType =
-        orderDetails.orderType == "Subscription" ? "Subscription" : "Scheduled";
+        orderDetails.orderType == orderMessages.types.subscription
+          ? orderMessages.types.subscription
+          : orderCategoriesMap.scheduled;
     }
 
     let productDetails = await getProductDetails(
@@ -103,24 +104,17 @@ async function createOrder(orderDetails) {
     );
 
     if (productDetails.products.length === 0)
-      return new responseModel(
-        false,
-        "No products found in cart. Please add products to cart first.",
-      );
+      return new responseModel(false, orderMessages.outofstock);
 
     var isOutofStock = productDetails.products.some(
       (p) => p.outOfStock === true,
     );
 
-    if (isOutofStock)
-      return new responseModel(
-        false,
-        "Some products are out of stock. Please check your cart.",
-      );
+    if (isOutofStock) return new responseModel(false, orderMessages.outofstock);
 
     const newOrderId = await getNextOrderId();
     if (!newOrderId) {
-      return new responseModel(false, "Failed to generate new order ID");
+      return new responseModel(false, orderMessages.qrFailed);
     }
 
     if (
@@ -160,7 +154,7 @@ async function createOrder(orderDetails) {
       discountPrice.discount;
 
     const newOrder = {
-      id: `Order-${newOrderId}`,
+      id: `${orderType[0]}${newOrderId}`,
       customerDetails: orderDetails.customerDetails,
       productDetails: productDetails.products,
       storeDetails: {
@@ -178,9 +172,9 @@ async function createOrder(orderDetails) {
       orderPrice: price,
       couponCode: orderDetails.couponCode,
       orderType,
-      createdOn: formatDateCustom(new Date()),
+      createdOn: orderDetails.createdOn,
       PaymentDetails: {
-        paymentStatus: "PENDING",
+        paymentStatus: orderMessages.types.pending,
         paymentDetails: [],
       },
       storeAdminId: orderDetails.storeDetails.storeAdminId || "",
@@ -192,14 +186,14 @@ async function createOrder(orderDetails) {
       orderCategoriesMap.quick,
     );
     if (!paymentUrl.success) {
-      return new responseModel(false, "Failed to create payment URL");
+      return new responseModel(false, orderMessages.urlFailed);
     }
     await orderContainer.items.create(newOrder);
     await applyCouponAndUpdate(
       discountPrice,
       orderDetails.customerDetails.customerId,
     );
-    return new responseModel(true, "Order created successfully", {
+    return new responseModel(true, orderMessages.orderCreate, {
       orderId: newOrder.id,
       paymentUrl,
     });
@@ -213,28 +207,33 @@ async function getNextOrderId() {
   try {
     const container = getContainer(ContainerIds.Order);
     const counterId = "Orders";
-
+    const today = new Date().toISOString().slice(0, 10).replace(/-/g, "");
     const { resource: counterDoc } = await container
       .item(counterId, counterId)
       .read();
 
     let nextId;
-
     if (!counterDoc) {
       nextId = 1;
       const newCounter = {
         id: counterId,
         type: "counter",
+        date: today,
         value: nextId,
       };
       await container.items.create(newCounter);
     } else {
-      nextId = counterDoc.value + 1;
+      if (counterDoc.date === today) {
+        nextId = counterDoc.value + 1;
+      } else {
+        nextId = 1;
+        counterDoc.date = today;
+      }
       counterDoc.value = nextId;
       await container.item(counterId, counterId).replace(counterDoc);
     }
-
-    return nextId;
+    const orderId = `${today}ORD${nextId}`;
+    return orderId;
   } catch (error) {
     logger.error(commonMessages.errorOccured, error);
     return null;
@@ -361,41 +360,6 @@ const updateProductPrices = async (productDetails) => {
     return updatedProductDetails;
   } catch (error) {
     logger.error(commonMessages.errorOccured, error);
-  }
-};
-
-const createReOrder = async (orderDetails) => {
-  try {
-    const container = getContainer(ContainerIds.Order);
-    const newOrderId = await getNextOrderId();
-    const newOrder = {
-      id: `Order-${newOrderId}`,
-      customerDetails: {
-        customerId: orderDetails.customerDetails.customerId,
-        address: orderDetails.customerDetails.customerAddress,
-      },
-      productDetails: orderDetails.productDetails,
-      storeId: orderDetails.storeId,
-      storeAdminId: orderDetails.storeDetails?.storeAdminId || "",
-      subscriptionId: orderDetails.subscriptionId,
-      status: orderMessages.types.new,
-      deliveryCharges: orderDetails.deliveryCharges,
-      packagingCharges: orderDetails.packagingCharges,
-      platformCharges: orderDetails.platformCharges,
-      IsReplacement: true,
-      orderPrice: orderDetails.price,
-      couponUsed: "",
-      orderType: orderMessages.types.quick,
-      createdOn: formatDateCustom(new Date()),
-    };
-
-    //const {resource : createdOrder} = await container.items.create(newOrder);
-    const createdOrder = await createRecord(container, newOrder);
-
-    return new responseModel(true, orderMessages.placed, createdOrder);
-  } catch (error) {
-    logger.error(commonMessages.errorOccured, error);
-    return new responseModel(false, error.message);
   }
 };
 
@@ -540,7 +504,7 @@ async function createSubscription(
   couponCode,
 ) {
   const { createPayment } = require("../utils/PhonePe");
-
+  const { convertUTCtoIST } = require("../utils/schedules");
   try {
     // Validate inputs
     if (
@@ -599,6 +563,7 @@ async function createSubscription(
       if (!discountPrice.success)
         return new responseModel(false, discountPrice.message);
     }
+    const today = convertUTCtoIST(new Date().toISOString());
     const deliveryTime = dt.format("HH:mm:ss");
     const newSubscription = {
       id: uuidv4(),
@@ -609,6 +574,7 @@ async function createSubscription(
         customerId: userId,
         address: customerDetails.addresses[0],
         Name: customerDetails.name,
+        phone: phone,
       },
       subscriptionOrderDates: [],
       pendingOrderDates: pendingDates,
@@ -619,7 +585,7 @@ async function createSubscription(
       payments: [],
       totalPrice: productDetails.subTotal * weeksCount - discountPrice.discount,
       storeAdminId: storeDetails?.storeAdminId || "",
-      createdDate: new Date().toISOString().slice(0, 16),
+      createdDate: today,
     };
 
     // Create payment request
@@ -659,7 +625,6 @@ module.exports = {
   createOrder,
   getProductDetails,
   updateProductPrices,
-  createReOrder,
   scheduledDelivery,
   getNextOrderId,
   getEnrichedProductDetails,

@@ -10,7 +10,6 @@ const {
   getDetailsById,
   fetchAllItems,
   updateRecord,
-  formatDateCustom,
 } = require("../services/cosmosService");
 const {
   addStoreProducts,
@@ -28,6 +27,7 @@ const storeContainer = getContainer(ContainerIds.StoreDetails);
 const { storeSchema } = require("../models/storeSchemas");
 const { createDynamicSchema } = require("../models/userSchemas");
 const { logger } = require("../jobLogger");
+const { convertUTCtoIST } = require("../utils/schedules");
 
 router.post("/create", authenticateToken, async (req, res) => {
   try {
@@ -131,7 +131,7 @@ router.post("/create", authenticateToken, async (req, res) => {
       platformCharges,
       deliveryRange,
       isAuthorized: req.body.isAuthorized ? req.body.isAuthorized : "Approved",
-      createdOn: formatDateCustom(new Date()),
+      createdOn: convertUTCtoIST(new Date().toISOString()),
     };
 
     const store = await createRecord(storeContainer, newStore);

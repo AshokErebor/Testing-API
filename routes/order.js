@@ -25,6 +25,7 @@ const {
 } = require("../constants");
 const { getNearestStore } = require("../services/mapService");
 const { logger } = require("../jobLogger");
+const { convertUTCtoIST } = require("../utils/schedules");
 
 const router = express.Router();
 const orderContainer = getContainer(ContainerIds.Order);
@@ -74,6 +75,7 @@ router.post("/createOrder", authenticateToken, async (req, res) => {
         customerId: userId,
         address: customerDetails.addresses[0],
         Name: customerDetails.name,
+        phone: phone,
       },
       storeDetails: storeDetails,
       subscriptionId: "",
@@ -81,7 +83,7 @@ router.post("/createOrder", authenticateToken, async (req, res) => {
       orderType: orderMessages.types.quick,
       couponCode,
       storeAdminId: storeDetails?.storeAdminId || "",
-      createdOn: formatDateCustom(new Date()),
+      createdOn: convertUTCtoIST(new Date().toISOString()),
     };
 
     const result = await createOrder(orderDetails);

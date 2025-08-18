@@ -8,7 +8,6 @@ const {
   getUserDetails,
   updateRecord,
   getUsers,
-  formatDateCustom,
 } = require("../services/cosmosService");
 const { OTPGeneration } = require("../services/otpService");
 const { setUserInCache } = require("../services/userService");
@@ -24,6 +23,7 @@ const {
   addressSchema,
   createDynamicSchema,
 } = require("../models/userSchemas");
+const { convertUTCtoIST } = require("../utils/schedules");
 const customerContainer = getContainer(ContainerIds.Customers);
 
 router.post("/signup", async (req, res) => {
@@ -61,7 +61,7 @@ router.post("/signup", async (req, res) => {
         addresses: [],
         verified: false,
         dateOfBirth,
-        createdOn: formatDateCustom(new Date()),
+        createdOn: convertUTCtoIST(new Date().toISOString()),
       };
 
       user = await setUserInCache(phone, roles.Customer, newUser);

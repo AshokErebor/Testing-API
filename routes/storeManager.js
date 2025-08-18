@@ -11,7 +11,6 @@ const {
   deleteRecord,
   getDataByQuery,
   getDetailsById,
-  formatDateCustom,
 } = require("../services/cosmosService");
 const { OTPGeneration } = require("../services/otpService");
 const { createReOrder } = require("../services/orderService");
@@ -26,6 +25,7 @@ const { setUserInCache } = require("../services/userService");
 const storeManagerContainer = getContainer(ContainerIds.StoreManager);
 const orderContainer = getContainer(ContainerIds.Order);
 const { logger } = require("../jobLogger");
+const { convertUTCtoIST } = require("../utils/schedules");
 
 router.post("/signup", async (req, res) => {
   try {
@@ -43,7 +43,7 @@ router.post("/signup", async (req, res) => {
         phone,
         storeAdmin,
         password: hashedPassword,
-        createdOn: formatDateCustom(new Date()),
+        createdOn: convertUTCtoIST(new Date().toISOString()),
       };
 
       user = await setUserInCache(email, roles.StoreManager, newUser);

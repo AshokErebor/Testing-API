@@ -8,7 +8,6 @@ const {
   getUserDetails,
   updateRecord,
   getUsers,
-  formatDateCustom,
 } = require("../services/cosmosService");
 const {
   ContainerIds,
@@ -21,6 +20,7 @@ const { setUserInCache } = require("../services/userService");
 const responseModel = require("../models/ResponseModel");
 const driverContainer = getContainer(ContainerIds.Driver);
 const { driverSchema, createDynamicSchema } = require("../models/userSchemas");
+const { convertUTCtoIST } = require("../utils/schedules");
 
 router.post("/signup", async (req, res) => {
   try {
@@ -67,7 +67,7 @@ router.post("/signup", async (req, res) => {
         verified: false,
         feedBack: "",
         isAuthorized,
-        createdOn: formatDateCustom(new Date()),
+        createdOn: convertUTCtoIST(new Date().toISOString()),
       };
 
       user = await setUserInCache(phone, roles.Driver, newUser);

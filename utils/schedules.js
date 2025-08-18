@@ -90,7 +90,7 @@ function convertUTCtoIST(dateStr) {
   try {
     return DateTime.fromISO(dateStr, { zone: "utc" })
       .setZone("Asia/Kolkata")
-      .toFormat("yyyy-MM-dd'T'HH:mm");
+      .toISO({ suppressMilliseconds: false });
   } catch (error) {
     logger.error(commonMessages.errorOccured, error);
   }

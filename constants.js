@@ -171,6 +171,8 @@ const orderMessages = {
   subTotal: "subTotal",
   total: "total",
   couponDiscount: "couponDiscount",
+  urlFailed: "Failed to create payment URL",
+  orderCreate: "Order created successfully",
 };
 
 const couponMessages = {

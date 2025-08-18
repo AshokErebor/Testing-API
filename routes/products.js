@@ -35,6 +35,7 @@ const { createDynamicSchema } = require("../models/userSchemas");
 const productContainer = getContainer(ContainerIds.Products);
 const categoryContainer = getContainer(ContainerIds.Categories);
 const { logger } = require("../jobLogger");
+const { convertUTCtoIST } = require("../utils/schedules");
 
 router.post("/add", authenticateToken, async (req, res) => {
   try {
@@ -102,7 +103,7 @@ router.post("/add", authenticateToken, async (req, res) => {
       storeAdminId: id,
       rating,
       reviews: [],
-      createdOn: formatDateCustom(new Date()),
+      createdOn: convertUTCtoIST(new Date().toISOString()),
     };
 
     newProduct.variants = [
@@ -303,7 +304,7 @@ router.post("/createCategory", authenticateToken, async (req, res) => {
       category,
       backgroundImage,
       logoImage,
-      createdOn: formatDateCustom(new Date()),
+      createdOn: convertUTCtoIST(new Date().toISOString()),
     };
 
     const createdItem = await createRecord(categoryContainer, item);

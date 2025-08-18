@@ -10,7 +10,6 @@ const {
   getDetailsById,
   getUsers,
   updateRecord,
-  formatDateCustom,
 } = require("../services/cosmosService");
 const {
   ContainerIds,
@@ -23,6 +22,7 @@ const { logger } = require("../jobLogger");
 const bcrypt = require("bcrypt");
 const responseModel = require("../models/ResponseModel");
 const { setUserInCache } = require("../services/userService");
+const { convertUTCtoIST } = require("../utils/schedules");
 const systemAdminContainer = getContainer(ContainerIds.SystemAdmin);
 
 router.post("/signup", async (req, res) => {
@@ -52,7 +52,7 @@ router.post("/signup", async (req, res) => {
         phone,
         verified: false,
         password: hashedPassword,
-        createdOn: formatDateCustom(new Date()),
+        createdOn: convertUTCtoIST(new Date().toISOString()),
       };
 
       user = await setUserInCache(email, roles.SystemAdmin, newUser);
