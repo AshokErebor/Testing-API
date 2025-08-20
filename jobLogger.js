@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const logsDir = path.join(__dirname, "logs");
+const logsDir = process.env.RAILWAY_ENVIRONMENT ? "/tmp/logs" : path.join(__dirname, "logs");
 if (!fs.existsSync(logsDir)) {
   fs.mkdirSync(logsDir);
 }
