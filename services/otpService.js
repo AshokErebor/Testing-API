@@ -4,7 +4,7 @@ const {
   createRecord,
 } = require("../services/cosmosService");
 const { v4: uuidv4 } = require("uuid");
-const Randomstring = require("randomstring");
+// const Randomstring = require("randomstring");
 const responseModel = require("../models/ResponseModel");
 const { mail } = require("../utils/mail");
 const {
@@ -15,21 +15,22 @@ const {
   userMessages,
 } = require("../constants");
 const jwt = require("jsonwebtoken");
-const twilio = require("twilio");
 const { logger } = require("../jobLogger");
 
-function generateOtp() {
-  try {
-    return Randomstring.generate({ length: 6, charset: "numeric" });
-  } catch {
-    return "645456";
-  }
-}
+// function generateOtp() {
+//   try {
+//     // return Randomstring.generate({ length: 6, charset: "numeric" });
+//     return "111111";
+//   } catch {
+//     return "645456";
+//   }
+// }
 
 async function OTPGeneration(userId, role) {
   try {
     const container = getContainer(ContainerIds.OTP);
-    const otp = generateOtp();
+    // const otp = generateOtp();
+    const otp = "111111";
     const OTP_EXPIRY_MS = 5 * 60 * 1000;
 
     let userotp = "";
@@ -108,16 +109,6 @@ async function handleRole(role, userId, userotp) {
         return new responseModel(true, otpMessages.sent);
       case roles.Customer:
       case roles.Driver:
-        var accountSid = process.env.Twilio_ACCOUNT_SID;
-        var authToken = process.env.Twilio_AUTH_TOKEN;
-        var client = twilio(accountSid, authToken);
-
-        client.messages.create({
-          body: otpMessages.phone.replace(otpMessages.otp, userotp),
-          from: process.env.Twilio_PHONE_NUMBER,
-          to: "+91" + userId,
-        });
-
         return new responseModel(true, otpMessages.sent);
       default:
         return new responseModel(false, userMessages.invalid);
