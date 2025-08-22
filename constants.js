@@ -28,7 +28,7 @@ const roles = {
 const otpMessages = {
   verifed: "OTP verified successfully",
   sent: "OTP has sent",
-  subject: "Registration From Rooted",
+  subject: "Verification Code for RootedFoods",
   otp: "{userotp}",
   email: `Hi,\nYour Rooted Registration verification code is {userotp}`,
   expired: "OTP has expired",

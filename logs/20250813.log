@@ -1,0 +1,44 @@
+[2025-08-13 16:23:12] [INFO] POST /api/storeAdmin/login
+[2025-08-13 16:34:46] [INFO] POST /api/storeAdmin/login
+[2025-08-13 16:35:23] [INFO] POST /api/verifyUser
+[2025-08-13 16:35:25] [INFO] GET /api/order/getOrders/StoreAdmins?page=1&ItemRequest=10
+[2025-08-13 16:35:25] [INFO] GET /api/storeAdmin/statistics
+[2025-08-13 16:35:28] [ERROR] An error occured:
+[2025-08-13 16:35:34] [INFO] GET /api/order/getOrders/StoreAdmins?page=1&ItemRequest=10
+[2025-08-13 16:35:38] [INFO] GET /api/storeAdmin/statistics
+[2025-08-13 16:35:38] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-08-13 16:35:40] [ERROR] An error occured:
+[2025-08-13 16:35:40] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-08-13 16:35:43] [INFO] GET /api/order/getOrders/StoreAdmins?page=1&ItemRequest=10
+[2025-08-13 16:35:43] [INFO] GET /api/storeAdmin/statistics
+[2025-08-13 16:35:43] [INFO] GET /api/order/getOrders/StoreAdmins?page=2&ItemRequest=10
+[2025-08-13 16:35:45] [ERROR] An error occured:
+[2025-08-13 16:36:00] [INFO] GET /api/order/getOrder/S20250811ORD7
+[2025-08-13 16:38:57] [INFO] GET /api/storeAdmin/statistics
+[2025-08-13 16:38:57] [INFO] GET /api/order/getOrders/StoreAdmins?page=1&ItemRequest=10
+[2025-08-13 16:39:01] [ERROR] An error occured:
+[2025-08-13 16:40:01] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-08-13 16:40:01] [INFO] GET /api/storeAdmin/statistics
+[2025-08-13 16:40:03] [ERROR] An error occured:
+[2025-08-13 18:07:43] [INFO] GET /api/storeAdmin/statistics
+[2025-08-13 18:07:43] [INFO] GET /api/order/getOrders/StoreAdmins?page=1&ItemRequest=10
+[2025-08-13 18:07:47] [ERROR] An error occured:
+[2025-08-13 18:07:47] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-08-13 18:08:42] [INFO] GET /api/order/getOrders/StoreAdmins?page=1&ItemRequest=10
+[2025-08-13 18:08:42] [INFO] GET /api/storeAdmin/statistics
+[2025-08-13 18:08:44] [ERROR] An error occured:
+[2025-08-13 18:08:50] [INFO] GET /api/storeAdmin/statistics
+[2025-08-13 18:08:50] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-08-13 18:08:52] [ERROR] An error occured:
+[2025-08-13 18:09:24] [INFO] GET /api/storeAdmin/statistics
+[2025-08-13 18:09:24] [INFO] GET /api/order/getOrders/StoreAdmins?page=1&ItemRequest=10
+[2025-08-13 18:09:26] [ERROR] An error occured:
+[2025-08-13 18:09:27] [INFO] GET /api/storeAdmin/statistics
+[2025-08-13 18:09:27] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-08-13 18:09:29] [ERROR] An error occured:
+[2025-08-13 18:18:14] [INFO] GET /api/storeAdmin/statistics
+[2025-08-13 18:18:14] [INFO] GET /api/order/getOrders/StoreAdmins?page=1&ItemRequest=10
+[2025-08-13 18:18:18] [ERROR] An error occured:
+[2025-08-13 18:20:32] [INFO] GET /api/storeAdmin/statistics
+[2025-08-13 18:20:32] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-08-13 18:20:35] [ERROR] An error occured:

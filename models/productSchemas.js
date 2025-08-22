@@ -58,7 +58,7 @@ const bannerSchema = z
     id: z.uuid("Invalid Banner Id").optional(),
     bannerName: z.string().min(1, "Banner Name is required").optional(),
     image: z.string().min(1, "Banner Image is required").optional(),
-    screenName: z.string().min(1, "Screen Name is required").optional(),
+    screenName: z.string().min(1, "Screen Name cannot be empty").optional(),
     params: z
       .union([
         z.object({

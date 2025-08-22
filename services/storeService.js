@@ -381,6 +381,79 @@ const getIdbyStoreadmin = (storeAdminId) => {
   }
 };
 
+async function deleteProductFromInventories(productId) {
+  try {
+    const storeProductContainer = await getContainer(ContainerIds.StoreProduct);
+    const query = {
+      query:
+        "SELECT * FROM c WHERE ARRAY_CONTAINS(c.products, {productId: @productId}, true)",
+      parameters: [{ name: "@productId", value: productId }],
+    };
+
+    const { resources: inventories } = await storeProductContainer.items
+      .query(query)
+      .fetchAll();
+
+    let allSucceeded = true;
+
+    for (const inventory of inventories) {
+      inventory.products = inventory.products.filter(
+        (p) => p.productId !== productId,
+      );
+
+      const updated = await updateRecord(storeProductContainer, inventory);
+
+      if (!updated) {
+        allSucceeded = false;
+        logger.error(`Failed to update inventory for storeId: ${inventory.id}`);
+      }
+    }
+
+    if (allSucceeded) {
+      return new responseModel(true, productMessages.product.deleted);
+    } else {
+      return new responseModel(false, commonMessages.partialFailure);
+    }
+  } catch (error) {
+    logger.error(commonMessages.errorOccured, error);
+    return new responseModel(false, error.message);
+  }
+}
+
+async function removeVariantFromInventory(productId, variantId) {
+  try {
+    const storeProductContainer = getContainer(ContainerIds.StoreProduct);
+    const storeProducts = await fetchAllItems(storeProductContainer);
+    if (!storeProducts) {
+      return new responseModel(false, commonMessages.errorOccured);
+    }
+
+    for (const storeProduct of storeProducts) {
+      const product = storeProduct.products.find(
+        (r) => r.productId === productId,
+      );
+      if (!product) {
+        return new responseModel(false, productMessages.product.notFound);
+      }
+      product.variants = product.variants.filter(
+        (v) => v.variantId !== variantId,
+      );
+      product.stock = product.variants.reduce(
+        (total, variant) => total + variant.stock,
+        0,
+      );
+      const update = await updateRecord(storeProductContainer, storeProduct);
+      if (!update) {
+        return new responseModel(false, commonMessages.failed);
+      }
+    }
+    return new responseModel(true, commonMessages.success);
+  } catch (error) {
+    logger.error(commonMessages.errorOccured, error);
+    return new responseModel(false, error.message);
+  }
+}
+
 module.exports = {
   addProductTostores,
   addStoreProducts,
@@ -391,4 +464,6 @@ module.exports = {
   getCombinedProductInfo,
   getProductAvailability,
   getIdbyStoreadmin,
+  deleteProductFromInventories,
+  removeVariantFromInventory,
 };

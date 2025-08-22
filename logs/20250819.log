@@ -1,0 +1,21 @@
+[2025-08-19 17:03:19] [INFO] GET /api/order/transactions?page=1&ItemRequest=10
+[2025-08-19 17:03:34] [INFO] GET /api/order/transactions?page=2&ItemRequest=10
+[2025-08-19 17:03:38] [INFO] GET /api/order/transactions?page=3&ItemRequest=10
+[2025-08-19 17:03:43] [INFO] GET /api/store/getStoresByStoreAdminId
+[2025-08-19 17:04:00] [INFO] GET /api/storeAdmin/statistics
+[2025-08-19 17:04:03] [ERROR] An error occured:
+[2025-08-19 17:05:00] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-08-19 17:05:30] [INFO] POST /api/uploads/upload
+[2025-08-19 17:19:16] [INFO] POST /api/uploads/upload
+[2025-08-19 17:21:09] [INFO] POST /api/uploads/upload
+[2025-08-19 17:22:40] [INFO] POST /api/uploads/upload
+[2025-08-19 17:23:20] [INFO] GET /api/order/getOrders/StoreAdmins?page=1&ItemRequest=10
+[2025-08-19 17:23:20] [INFO] GET /api/storeAdmin/statistics
+[2025-08-19 17:23:22] [INFO] GET /api/products/storeAdmin/a365713a-5aec-4364-b655-3e5624e917ef
+[2025-08-19 17:23:24] [ERROR] An error occured:
+[2025-08-19 17:25:09] [INFO] POST /api/uploads/upload
+[2025-08-19 17:25:50] [INFO] POST /api/products/add
+[2025-08-19 17:26:16] [INFO] POST /api/products/add
+[2025-08-19 17:26:56] [INFO] POST /api/products/add
+[2025-08-19 17:27:30] [INFO] POST /api/uploads/upload
+[2025-08-19 17:27:38] [INFO] POST /api/products/add
