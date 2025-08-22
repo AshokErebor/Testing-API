@@ -73,7 +73,6 @@ app.use("/api/order", order);
 app.use("/api/coupon", couponCodes);
 app.use("/api/subscriptions", subscriptionRoutes);
 app.use("/api/banners", bannerRoutes); // API for banners
-
 // Serve uploaded images publicly
 app.use("/uploads", express.static("uploads"));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
