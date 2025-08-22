@@ -14,6 +14,7 @@ const ContainerIds = {
   StoreManager: "StoreManager",
   StoreProduct: "StoreProduct",
   Subscriptions: "Subscriptions",
+  Banners: "Banners",
 };
 
 const roles = {
@@ -138,13 +139,13 @@ const storeMessage = {
   storesFetched: "Stores fetched successfully",
   storeStatus: {
     active: "Active",
-    inActive: "In-active",
+    inActive: "InActive",
   },
 };
 
 const orderMessages = {
   notFound: "Orders not found",
-  success: "Orders fetched succesfully",
+  success: "Orders fetched successfully",
   types: {
     pending: "Pending",
     new: "New",
@@ -173,6 +174,8 @@ const orderMessages = {
   couponDiscount: "couponDiscount",
   urlFailed: "Failed to create payment URL",
   orderCreate: "Order created successfully",
+  scheduleMessage: "Schedule Delivery Should be in Future",
+  addressNotFound: "Address Not Found",
 };
 
 const couponMessages = {
@@ -250,6 +253,18 @@ const orderCategoriesMap = {
   subscriptions: "Subscriptions",
 };
 
+const payments = {
+  callBackUrl: "https://rooted-staging.up.railway.app/api/phonepe/webhook",
+};
+
+const bannerMessages = {
+  created: "Banner created successfully",
+  updated: "Banner updated successfully",
+  deleted: "Banner deleted successfully",
+  fetched: "Banners fetched successfully",
+  notFound: "Banner not found",
+};
+
 module.exports = {
   ContainerIds,
   otpMessages,
@@ -266,4 +281,6 @@ module.exports = {
   paymentMessages,
   orderTypesMap,
   orderCategoriesMap,
+  payments,
+  bannerMessages,
 };

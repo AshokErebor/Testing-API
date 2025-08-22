@@ -85,6 +85,9 @@ const storeSchema = z
     deliveryRange: z
       .number()
       .min(0, "Delivery range must be a positive number"),
+    freeDeliveryRange: z
+      .number()
+      .min(0, "Free delivery range must be a positive number"),
     isAuthorized: z.string().min(1, "Is Authorized is required").optional(),
     storeStatus: z.string().min(1, "Store Status is required").optional(),
   })

@@ -7,7 +7,6 @@ const {
   getDataByQuery,
   createRecord,
   updateRecord,
-  formatDateCustom,
 } = require("../services/cosmosService");
 const {
   addProductTostores,
@@ -297,11 +296,12 @@ router.post("/createCategory", authenticateToken, async (req, res) => {
         .json(new responseModel(false, commonMessages.invalidFields, errors));
     }
 
-    const { category, backgroundImage, logoImage } = req.body;
+    const { category, backgroundImage, logoImage, isVisible = true } = req.body;
 
     const item = {
       id: uuidv4(),
       category,
+      isVisible,
       backgroundImage,
       logoImage,
       createdOn: convertUTCtoIST(new Date().toISOString()),
@@ -382,26 +382,45 @@ router.get("/storeAdmin/:id", authenticateToken, async (req, res) => {
   }
 });
 
-router.get("/byCategory/:category", async (req, res) => {
+router.get("/byCategory", async (req, res) => {
   try {
-    const category = req.params.category;
+    const { category, type } = req.query;
+
+    let whereClause = "";
+    let parameters = [];
+
+    if (category && type) {
+      whereClause = "c.category = @category AND c." + type + " = @type";
+      parameters = [
+        { name: "@category", value: category },
+        { name: "@type", value: true },
+      ];
+    } else if (category) {
+      whereClause = "c.category = @category";
+      parameters = [{ name: "@category", value: category }];
+    } else {
+      whereClause = "c." + type + " = @type";
+      parameters = [{ name: "@type", value: true }];
+    }
+
     const querySpec = {
-      query:
-        "SELECT c.id, c.name, c.price, c.description, c.stock, c.imageUrl, c.storeAdminId FROM c WHERE c.category = @category",
-      parameters: [
-        {
-          name: "@category",
-          value: category,
-        },
-      ],
+      query: `SELECT c.id, c.name, c.price, c.description, c.stock, 
+                     c.imageUrl, c.storeAdminId
+              FROM c 
+              WHERE ${whereClause}`,
+      parameters,
     };
+
     const products = await getDataByQuery(productContainer, querySpec);
-    if (products.length > 0) {
+
+    if (products?.length > 0) {
       return res.json(
         new responseModel(true, productMessages.success, products),
       );
     } else {
-      res.status(404).json(new responseModel(false, productMessages.notFound));
+      return res
+        .status(404)
+        .json(new responseModel(false, productMessages.notFound, products));
     }
   } catch (error) {
     logger.error(commonMessages.errorOccured, error);
@@ -429,7 +448,7 @@ router.post("/addReview", authenticateToken, async (req, res) => {
       reviewId: uuidv4(),
       rating,
       reviewUser,
-      commentDate: formatDateCustom(new Date()),
+      commentDate: convertUTCtoIST(new Date()),
       helpfulreviewCount: 0,
       unhelpfulreviewCount: 0,
       comment,
@@ -496,7 +515,7 @@ router.post("/addReplyToReview", authenticateToken, async (req, res) => {
     const newReply = {
       replyId: uuidv4(),
       replyUser,
-      commentDate: formatDateCustom(new Date()),
+      commentDate: convertUTCtoIST(new Date()),
       comment,
     };
 
@@ -547,7 +566,7 @@ router.post("/addVoteToReview", authenticateToken, async (req, res) => {
     const vote = {
       voteId: uuidv4(),
       userName,
-      voteTime: formatDateCustom(new Date()),
+      voteTime: convertUTCtoIST(new Date()),
     };
 
     const hasVotedHelpful = targetReview.helpful.some(

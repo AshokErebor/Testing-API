@@ -27,7 +27,8 @@ const getCustomerSubscriptionOrdersList = async (
 const getCustomerSubscriptionsList = async (container, phone) => {
   try {
     const querySpec = {
-      query: "SELECT * FROM c WHERE c.phone = @phone",
+      query:
+        "SELECT * FROM c WHERE c.phone = @phone ORDER BY c.createdDate DESC",
       parameters: [{ name: "@phone", value: phone }],
     };
 

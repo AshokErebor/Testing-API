@@ -88,11 +88,15 @@ async function updateScheduledDeliveries() {
 
 function convertUTCtoIST(dateStr) {
   try {
-    return DateTime.fromISO(dateStr, { zone: "utc" })
-      .setZone("Asia/Kolkata")
-      .toISO({ suppressMilliseconds: false });
+    let dt = DateTime.fromISO(dateStr, { setZone: true });
+    if (dt.zoneName === "UTC" || dt.offset === 0) {
+      return dt.setZone("Asia/Kolkata").toISO({ suppressMilliseconds: false });
+    } else {
+      return dt.toISO({ suppressMilliseconds: false });
+    }
   } catch (error) {
     logger.error(commonMessages.errorOccured, error);
+    return null;
   }
 }
 

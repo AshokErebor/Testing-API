@@ -9,6 +9,8 @@ const {
 } = require("../services/orderService");
 const { getIdbyStoreadmin } = require("../services/storeService");
 const { logger } = require("../jobLogger");
+const fs = require("fs").promises;
+const path = require("path");
 const client = new Redis({
   url: process.env.REDIS_HOST,
   token: process.env.REDIS_TOKEN,
@@ -183,6 +185,17 @@ const getAnalysticsByStoreAdmin = async (storeAdminId) => {
   }
 };
 
+async function deleteFile(fileName) {
+  try {
+    const filePath = path.join(__dirname, "../uploads", fileName);
+    await fs.unlink(filePath);
+    return true;
+  } catch (error) {
+    logger.error(commonMessages.errorOccured, error);
+    return false;
+  }
+}
+
 module.exports = {
   setUserInCache,
   getUserCache,
@@ -192,4 +205,5 @@ module.exports = {
   getAnalysticsByStoreAdmin,
   getDriversByStoreAdmin,
   getManagersByStoreAdmin,
+  deleteFile,
 };

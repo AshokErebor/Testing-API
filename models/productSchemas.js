@@ -27,6 +27,7 @@ const productSchema = z
 const categorySchema = z
   .object({
     category: z.string().min(1, "Category Name is required"),
+    isVisible: z.boolean().default(true),
     backgroundImage: z.string().min(1, "Background Image cannot be empty"),
     logoImage: z.string().min(1, "Logo Image cannot be empty"),
   })
@@ -52,9 +53,31 @@ const storeProductSchema = z.object({
   offerPrice: z.number().default(0),
 });
 
+const bannerSchema = z
+  .object({
+    id: z.uuid("Invalid Banner Id").optional(),
+    bannerName: z.string().min(1, "Banner Name is required").optional(),
+    image: z.string().min(1, "Banner Image is required").optional(),
+    screenName: z.string().min(1, "Screen Name cannot be empty").optional(),
+    params: z
+      .union([
+        z.object({
+          category: z.string().min(1),
+        }),
+        z.object({
+          id: z.string().min(1),
+        }),
+      ])
+      .optional(),
+    dynamic: z.boolean().default(true).optional(),
+    isActive: z.boolean().default(false).optional(),
+  })
+  .strict();
+
 module.exports = {
   productSchema,
   categorySchema,
   variantSchema,
   storeProductSchema,
+  bannerSchema,
 };

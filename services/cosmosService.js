@@ -36,26 +36,6 @@ const getContainer = (containerId) => {
   }
 };
 
-function formatDateCustom(date) {
-  try {
-    const months = commonMessages.months;
-
-    const month = months[date.getMonth()];
-    const day = String(date.getDate()).padStart(2, "0");
-    const year = date.getFullYear();
-
-    let hours = date.getHours();
-    const minutes = String(date.getMinutes()).padStart(2, "0");
-    const ampm = hours >= 12 ? "PM" : "AM";
-    hours = hours % 12 || 12; // convert 0 to 12 for AM
-
-    const formattedTime = `${String(hours).padStart(2, "0")}:${minutes} ${ampm}`;
-    return `${day}-${month}-${year} ${formattedTime}`;
-  } catch (error) {
-    logger.error(commonMessages.errorOccured, error);
-  }
-}
-
 const fetchAllItems = async (container) => {
   try {
     const { resources } = await container.items.readAll().fetchAll();
@@ -215,7 +195,7 @@ const getDataByQuery = async (container, querySpec) => {
   try {
     const { resources } = await container.items.query(querySpec).fetchAll();
     if (!Array.isArray(resources) || resources.length === 0) {
-      return null;
+      return [];
     }
     return resources;
   } catch (error) {
@@ -252,6 +232,5 @@ module.exports = {
   deleteRecord,
   getDataByQuery,
   getUsersByExpiryDate,
-  formatDateCustom,
   parseCreatedOn,
 };

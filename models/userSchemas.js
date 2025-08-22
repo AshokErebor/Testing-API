@@ -90,28 +90,30 @@ const driverSchema = z
   })
   .strict();
 
-const addressSchema = z.object({
-  id: z.uuid("Invalid Address Id").optional(),
-  origin: z
-    .string()
-    .regex(
-      /^-?\d{1,3}\.\d+,\s*-?\d{1,3}\.\d+$/,
-      "Origin must be in format: 'latitude, longitude'",
-    ),
-  d_no: z.string().min(1, "Door No. is required"),
-  street: z.string().min(1, "Street is required"),
-  landMark: z.string().optional(),
-  area: z.string().min(1, "Area is required"),
-  city: z.string().min(1, "City is required"),
-  state: z.string().min(1, "State is required"),
-  pincode: z
-    .string()
-    .min(4, "Pincode must be at least 4 digits")
-    .max(10, "Pincode too long"),
-  label: z.string().min(1, "Label is required"),
-  phone: z.string().min(10, "Phone number must be at least 10 digits"),
-  country: z.string().min(1, "Country is required"),
-});
+const addressSchema = z
+  .object({
+    id: z.uuid("Invalid Address Id").optional(),
+    origin: z
+      .string()
+      .regex(
+        /^-?\d{1,3}\.\d+,\s*-?\d{1,3}\.\d+$/,
+        "Origin must be in format: 'latitude, longitude'",
+      ),
+    d_no: z.string().min(1, "Door No. is required"),
+    street: z.string().min(1, "Street is required"),
+    landMark: z.string().optional(),
+    area: z.string().min(1, "Area is required"),
+    city: z.string().min(1, "City is required"),
+    state: z.string().min(1, "State is required"),
+    pincode: z
+      .string()
+      .min(4, "Pincode must be at least 4 digits")
+      .max(10, "Pincode too long"),
+    label: z.string().min(1, "Label is required"),
+    phone: z.string().min(10, "Phone number must be at least 10 digits"),
+    country: z.string().min(1, "Country is required"),
+  })
+  .strict();
 
 function createDynamicSchema(schema, body) {
   try {

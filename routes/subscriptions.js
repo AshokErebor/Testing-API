@@ -216,10 +216,32 @@ router.get("/getCustomerSubscriptions", authenticateToken, async (req, res) => {
       subscriptionContainer,
       phone,
     );
+    const today = new Date().toISOString().slice(0, 10);
+
+    const updatedResult = result.map((subscription) => {
+      let subscriptionStatus = "inactive";
+
+      if (subscription.subscriptionDates?.length > 0) {
+        const lastDate =
+          subscription.subscriptionDates[
+            subscription.subscriptionDates.length - 1
+          ];
+
+        if (lastDate.slice(0, 10) <= today) {
+          subscriptionStatus = "active";
+        }
+      }
+      return {
+        ...subscription,
+        subscriptionStatus,
+      };
+    });
 
     return res
       .status(200)
-      .json(new responseModel(true, subscriptionMessages.fetched, result));
+      .json(
+        new responseModel(true, subscriptionMessages.fetched, updatedResult),
+      );
   } catch (error) {
     logger.error(commonMessages.errorOccured, error);
     return res.status(500).json(new responseModel(false, error.message));
@@ -227,11 +249,11 @@ router.get("/getCustomerSubscriptions", authenticateToken, async (req, res) => {
 });
 
 router.get(
-  "/getCustomerOrdersBySubscriptionId",
+  "/getCustomerOrdersBySubscriptionId/:subscriptionId",
   authenticateToken,
   async (req, res) => {
     try {
-      const { subscriptionId } = req.body;
+      const subscriptionId = req.params.subscriptionId;
 
       const userId = req.user.id;
 

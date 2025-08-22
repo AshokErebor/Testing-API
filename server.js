@@ -31,6 +31,7 @@ const order = require("./routes/order");
 const couponCodes = require("./routes/coupon");
 const subscriptionRoutes = require("./routes/subscriptions");
 const payments = require("./routes/payments");
+const bannerRoutes = require("./routes/banners");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -71,6 +72,7 @@ app.use("/api/storeManager", storeManager); //API for storeManager
 app.use("/api/order", order);
 app.use("/api/coupon", couponCodes);
 app.use("/api/subscriptions", subscriptionRoutes);
+app.use("/api/banners", bannerRoutes); // API for banners
 // Serve uploaded images publicly
 app.use("/uploads", express.static("uploads"));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));

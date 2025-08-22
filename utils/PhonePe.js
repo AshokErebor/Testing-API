@@ -25,6 +25,7 @@ const {
   orderMessages,
   authMessage,
   orderCategoriesMap,
+  payments,
 } = require("../constants");
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SCERET;
@@ -46,9 +47,16 @@ const client = StandardCheckoutClient.getInstance(
   env,
 );
 
-async function createPayment(amount, orderId, orderType) {
-  const CALLBACK_URL = "http://localhost:3000/api/phonepe/webhook";
+const WEBHOOK_USERNAME = process.env.WEBHOOK_USER;
+const WEBHOOK_PASSWORD = process.env.WEBHOOK_PASS;
 
+function computeAuthHash() {
+  const creds = `${WEBHOOK_USERNAME}:${WEBHOOK_PASSWORD}`;
+  return crypto.createHash("sha256").update(creds).digest("hex");
+}
+
+async function createPayment(amount, orderId, orderType) {
+  const CALLBACK_URL = payments.callBackUrl;
   try {
     const request = CreateSdkOrderRequest.StandardCheckoutBuilder()
       .merchantOrderId(orderId)
@@ -69,6 +77,13 @@ async function createPayment(amount, orderId, orderType) {
 
 const handlePaymentStatus = async (req, res) => {
   try {
+    const header = req.headers["authorization"];
+    const expected = computeAuthHash();
+
+    if (!header || header !== expected) {
+      console.warn("Unauthorized webhook call");
+      return res.status(401).send("Unauthorized");
+    }
     const { payload } = req.body;
     const orderType = payload.metaInfo.udf1;
     const orderId = payload.merchantOrderId;
@@ -159,10 +174,7 @@ const createSubscriptionOrders = async (subscription, paymentDetails) => {
       subscriptionId: subscription.id,
       scheduledDelivery: scheduledDelivery,
       status: "New",
-      deliveryCharges: 0,
-      packagingCharges: 0,
-      platformCharges: 0,
-      orderPrice: parseFloat(subscription.totalPrice),
+      priceDetails: parseFloat(subscription.priceDetails),
       orderType: orderCategoriesMap.subscriptions,
       storeAdminId: subscription.storeAdminId || "",
       PaymentDetails: {

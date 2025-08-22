@@ -47,7 +47,7 @@ async function findOrderByUser(container, id, role, offset, limit) {
         return [];
     }
     const querySpec = {
-      query: `SELECT * FROM c WHERE ${userId} = @id OFFSET @offset LIMIT @limit`,
+      query: `SELECT * FROM c WHERE ${userId} = @id ORDER BY c.createdOn DESC OFFSET @offset LIMIT @limit`,
       parameters: [
         { name: "@id", value: id },
         { name: "@offset", value: offset },
@@ -139,11 +139,7 @@ async function createOrder(orderDetails) {
         return new responseModel(false, discountPrice.message);
     }
 
-    var deliveryCharges =
-      orderDetails.storeDetails?.distance >
-      orderDetails.storeDetails?.deliveryRange
-        ? orderDetails.storeDetails.deliveryCharges
-        : 0;
+    var deliveryCharges = orderDetails.storeDetails?.deliveryCharges || 0;
     var packagingCharges = orderDetails.storeDetails?.packagingCharges || 0;
     var platformCharges = orderDetails.storeDetails?.platformCharges || 0;
     const price =
@@ -161,15 +157,19 @@ async function createOrder(orderDetails) {
         id: orderDetails.storeDetails.id,
         storeName: orderDetails.storeDetails.storeName,
         phone: orderDetails.storeDetails.phone,
-        address: orderDetails.storeDetails.storeAddress,
+        address: orderDetails.storeAddress,
       },
       subscriptionId: orderDetails.subscriptionId,
       scheduledDelivery: orderDetails.scheduledDelivery,
       status: "New",
-      deliveryCharges,
-      packagingCharges,
-      platformCharges,
-      orderPrice: price,
+      priceDetails: {
+        subTotal: productDetails.subTotal,
+        deliveryCharges,
+        packagingCharges,
+        platformCharges,
+        discountPrice: discountPrice.discount,
+        totalPrice: price,
+      },
       couponCode: orderDetails.couponCode,
       orderType,
       createdOn: orderDetails.createdOn,
@@ -181,21 +181,21 @@ async function createOrder(orderDetails) {
     };
 
     const paymentUrl = await createPayment(
-      newOrder.orderPrice,
+      price,
       newOrder.id,
-      orderCategoriesMap.quick,
+      newOrder.orderType,
     );
     if (!paymentUrl.success) {
       return new responseModel(false, orderMessages.urlFailed);
     }
-    await orderContainer.items.create(newOrder);
+    await createRecord(orderContainer, newOrder);
     await applyCouponAndUpdate(
       discountPrice,
       orderDetails.customerDetails.customerId,
     );
     return new responseModel(true, orderMessages.orderCreate, {
       orderId: newOrder.id,
-      paymentUrl,
+      paymentUrl: paymentUrl.response,
     });
   } catch (error) {
     logger.error(commonMessages.errorOccured, error);
@@ -502,6 +502,7 @@ async function createSubscription(
   userId,
   phone,
   couponCode,
+  address,
 ) {
   const { createPayment } = require("../utils/PhonePe");
   const { convertUTCtoIST } = require("../utils/schedules");
@@ -513,6 +514,7 @@ async function createSubscription(
     ) {
       return new responseModel(false, commonMessages.badRequest);
     }
+
     const dt = dayjs(scheduledDelivery);
     const day = dt.format("dddd");
     const weekdays = commonMessages.days;
@@ -563,18 +565,25 @@ async function createSubscription(
       if (!discountPrice.success)
         return new responseModel(false, discountPrice.message);
     }
+    const totalPrice =
+      productDetails.subTotal * weeksCount - discountPrice.discount;
     const today = convertUTCtoIST(new Date().toISOString());
     const deliveryTime = dt.format("HH:mm:ss");
     const newSubscription = {
       id: uuidv4(),
       phone,
       products: productDetails.products,
-      storeDetails,
+      storeDetails: {
+        id: storeDetails.id,
+        storeName: storeDetails.storeName,
+        phone: storeDetails.phone,
+        address: storeDetails.storeAddress,
+      },
       customerDetails: {
         customerId: userId,
-        address: customerDetails.addresses[0],
+        address,
         Name: customerDetails.name,
-        phone: phone,
+        phone,
       },
       subscriptionOrderDates: [],
       pendingOrderDates: pendingDates,
@@ -583,16 +592,24 @@ async function createSubscription(
       weeksCount,
       deliveryTime,
       payments: [],
-      totalPrice: productDetails.subTotal * weeksCount - discountPrice.discount,
+      couponCode,
+      priceDetails: {
+        discountPrice: discountPrice.discount,
+        subTotal: `${productDetails.subTotal} * ${weeksCount}`,
+        deliveryCharges: 0,
+        packagingCharges: 0,
+        platformCharges: 0,
+        totalPrice,
+      },
       storeAdminId: storeDetails?.storeAdminId || "",
       createdDate: today,
     };
 
     // Create payment request
     const paymentUrl = await createPayment(
-      newSubscription.totalPrice,
+      totalPrice,
       newSubscription.id,
-      "Subscriptions",
+      orderCategoriesMap.subscriptions,
     );
 
     if (!paymentUrl || !paymentUrl.success) {

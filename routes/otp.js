@@ -78,7 +78,14 @@ router.post("/sendOtp", async (req, res) => {
       return res
         .status(400)
         .json(new responseModel(false, commonMessages.badRequest));
+    const container = await getContainer(role);
+    const existingUser = await getDetailsByEmail(container, user);
 
+    if (!existingUser) {
+      return res
+        .status(404)
+        .json(new responseModel(false, userMessages.notfound));
+    }
     const response = await OTPGeneration(user, role);
 
     if (!response.success)

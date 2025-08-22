@@ -72,6 +72,7 @@ router.post("/create", authenticateToken, async (req, res) => {
       packagingCharges = 0,
       platformCharges = 0,
       deliveryRange = 0,
+      freeDeliveryRange = 0,
     } = req.body;
 
     const storeAdminId = req.user.id;
@@ -129,6 +130,7 @@ router.post("/create", authenticateToken, async (req, res) => {
       deliveryCharges,
       packagingCharges,
       platformCharges,
+      freeDeliveryRange,
       deliveryRange,
       isAuthorized: req.body.isAuthorized ? req.body.isAuthorized : "Approved",
       createdOn: convertUTCtoIST(new Date().toISOString()),

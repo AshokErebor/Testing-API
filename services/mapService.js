@@ -13,8 +13,12 @@ async function getNearestStore(origin) {
     const storeContainer = getContainer(ContainerIds.StoreDetails);
     const storeAddresses = await fetchAllItems(storeContainer);
     if (!storeAddresses || storeAddresses.length === 0) return null;
-    if (storeAddresses.length === 1) return storeAddresses[0];
-    return await findNearestAddress(origin, storeAddresses);
+    const nearestStore = await findNearestAddress(origin, storeAddresses);
+    if (nearestStore) {
+      return nearestStore;
+    } else {
+      return null;
+    }
   } catch (error) {
     logger.error(commonMessages.errorOccured, error);
   }
@@ -43,17 +47,13 @@ const haversineDistance = (coord1, coord2) => {
 async function findNearestAddress(origin, stores) {
   try {
     if (!origin || !Array.isArray(stores) || stores.length === 0) return null;
-
     const originCoords = parseCoordinates(origin.coordinates || origin);
-    const MAX_TRAVEL_DISTANCE_KM = 10;
-    const MAX_HAVERSINE_DISTANCE_KM = 25;
 
     const filteredStores = stores.filter((store) => {
       const coords = parseCoordinates(store?.address?.coordinates);
       if (!coords) return false;
-
-      const approxDistance = haversineDistance(originCoords, coords);
-      return approxDistance <= MAX_HAVERSINE_DISTANCE_KM;
+      const distance = haversineDistance(originCoords, coords);
+      return distance <= (store.deliveryRange || 0);
     });
 
     if (filteredStores.length === 0) return null;
@@ -63,10 +63,7 @@ async function findNearestAddress(origin, stores) {
         try {
           const result = await getTravelTime(origin, store.address.coordinates);
           const distance = parseFloat(result?.distance);
-          return {
-            store,
-            distance: isNaN(distance) ? Infinity : distance,
-          };
+          return { store, distance: isNaN(distance) ? Infinity : distance };
         } catch {
           return null;
         }
@@ -74,13 +71,18 @@ async function findNearestAddress(origin, stores) {
     );
 
     let nearestStore = null;
-    let shortestDistance = MAX_TRAVEL_DISTANCE_KM;
+    let shortestDistance = Infinity;
 
     for (const result of distanceResults) {
       if (result.status !== "fulfilled" || !result.value) continue;
-      const { store, distance } = result.value;
-
-      if (distance < shortestDistance) {
+      const { store, distance } = result.value || {};
+      if (!store || typeof distance !== "number") continue;
+      if (
+        distance < shortestDistance &&
+        distance <= (store.deliveryRange || 0) &&
+        store.address &&
+        store.address.address
+      ) {
         shortestDistance = distance;
         nearestStore = {
           id: store.id,
@@ -89,10 +91,14 @@ async function findNearestAddress(origin, stores) {
           distance: `${distance.toFixed(2)} km`,
           storeAddress: store.address.address,
           storeAdminId: store.storeAdminId || "",
-          deliveryCharges: store.deliveryCharges || 0,
+          deliveryCharges:
+            distance <= (store.freeDeliveryRange || 0)
+              ? 0
+              : store.deliveryCharges || 0,
           packagingCharges: store.packagingCharges || 0,
           platformCharges: store.platformCharges || 0,
           deliveryRange: store.deliveryRange || 0,
+          freeDeliveryRange: store.freeDeliveryRange || 0,
         };
       }
     }
