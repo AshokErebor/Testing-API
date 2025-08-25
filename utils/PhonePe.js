@@ -78,7 +78,10 @@ async function createPayment(amount, orderId, orderType) {
 const handlePaymentStatus = async (req, res) => {
   try {
     const header = req.headers["authorization"];
+    console.log("header:", header);
     const expected = computeAuthHash();
+
+    console.log("expected:", expected);
 
     if (!header || header !== expected) {
       console.warn("Unauthorized webhook call");
@@ -389,3 +392,4 @@ module.exports = {
   refundProcess,
   refundStatus,
 };
+
